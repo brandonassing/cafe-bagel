@@ -1,26 +1,20 @@
-//
-//  ContentView.swift
-//  cafe-bagel
-//
-//  Created by Brandon Assing on 2023-09-01.
-//
 
 import SwiftUI
 
-struct ContentView: View {
+struct TippingView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Tipping!")
         }
         .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TippingView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+		TippingView()
     }
 }
