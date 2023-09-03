@@ -10,19 +10,27 @@ struct TippingOptionView: View {
 	
     var body: some View {
 		Button {
-			print(tippingOption.displayPercentage)
+			print(self.tippingOption.displayPercentage)
 		} label: {
-			Text(tippingOption.displayPercentage)
-				.padding()
-				.frame(width: 300, height: 200)
-				.foregroundColor(.white)
-				.background(StyleGuide.Colour.primary)
+			VStack {
+				Text(self.tippingOption.displayPercentage)
+					.textStyle(StyleGuide.TextStyle.blockButtonTitle(size: 60))
+				
+				if let tipAmount = self.tippingOption.moneyAmount.displayValue {
+					Text(tipAmount)
+						.textStyle(StyleGuide.TextStyle.blockButtonSubtitle)
+				}
+			}
+			.padding()
+			.frame(width: 320, height: 200)
+			.foregroundColor(.white)
+			.background(StyleGuide.Colour.primary)
 		}
     }
 }
 
 struct TippingOptionView_Previews: PreviewProvider {
     static var previews: some View {
-        TippingOptionView(tippingOption: TippingOption(percentage: 5))
+        TippingOptionView(tippingOption: TippingOption(percentage: 5, preTipAmount: Money(amountCents: 1000)))
     }
 }

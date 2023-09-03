@@ -15,6 +15,7 @@
 		5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859052AA2E63C00C7BB3A /* TippingViewModel.swift */; };
 		5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859092AA2E98500C7BB3A /* TippingOptionView.swift */; };
 		5C18590D2AA2F06E00C7BB3A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */; };
+		5C1859122AA42E3400C7BB3A /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859112AA42E3400C7BB3A /* Money.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		5C1859052AA2E63C00C7BB3A /* TippingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TippingViewModel.swift; sourceTree = "<group>"; };
 		5C1859092AA2E98500C7BB3A /* TippingOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TippingOptionView.swift; sourceTree = "<group>"; };
 		5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
+		5C1859112AA42E3400C7BB3A /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5C1859012AA2E5D800C7BB3A /* TippingOption.swift */,
+				5C1859112AA42E3400C7BB3A /* Money.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */,
 				5C1859022AA2E5D800C7BB3A /* TippingOption.swift in Sources */,
+				5C1859122AA42E3400C7BB3A /* Money.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5C1859042AA2E61800C7BB3A /* TippingView.swift in Sources */,
 				5C1858F12AA2E1FF00C7BB3A /* cafe_bagelApp.swift in Sources */,
