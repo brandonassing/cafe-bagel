@@ -3,6 +3,8 @@ import SwiftUI
 
 struct TippingView: View {
 	@StateObject private var viewModel: TippingViewModel = TippingViewModel()
+	@State private var didSelectTip = false
+	@State private var initialSelectedTip: TippingOption?
 
     var body: some View {
 		
@@ -38,8 +40,20 @@ struct TippingView: View {
 				
 				TippingOptionView(
 					tippingOption: TippingOption(.noTip, preTipAmount: self.viewModel.preTipAmount),
-					tapAction: { self.viewModel.selectTip.send($0) }
+					tapAction: { tippingOption in
+						self.didSelectTip = true
+						self.initialSelectedTip = tippingOption
+					}
 				)
+				// TODO: move tip logic into vm and update to show messages for other options
+				.alert(
+					"Wow really?",
+					isPresented: self.$didSelectTip,
+					presenting: self.initialSelectedTip
+				) { tippingOption in
+					Button("Yes, I'm cheap") { self.viewModel.selectTip.send(tippingOption) }
+					Button("You've convinced me") { }
+				} message: { _ in Text("On Gladys' birthday?..") }
 			}
 			.frame(width: 1020)
 			
