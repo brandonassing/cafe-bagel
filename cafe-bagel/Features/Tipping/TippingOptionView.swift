@@ -3,10 +3,7 @@ import SwiftUI
 
 struct TippingOptionView: View {
 	private let tippingOption: TippingOption
-	
-	init(tippingOption: TippingOption) {
-		self.tippingOption = tippingOption
-	}
+	private let tapAction: (TippingOption) -> Void
 	
 	private var isPrimaryOption: Bool {
 		switch self.tippingOption.tipType {
@@ -17,9 +14,14 @@ struct TippingOptionView: View {
 		}
 	}
 	
+	init(tippingOption: TippingOption, tapAction: @escaping (TippingOption) -> Void) {
+		self.tippingOption = tippingOption
+		self.tapAction = tapAction
+	}
+	
     var body: some View {
 		Button {
-			print(self.tippingOption.displayValue)
+			self.tapAction(self.tippingOption)
 		} label: {
 			VStack {
 				Text(self.tippingOption.displayValue)
@@ -42,10 +44,4 @@ fileprivate extension View {
 	func frame(isPrimaryButton: Bool) -> some View {
 		return isPrimaryButton ? self.frame(maxWidth: .infinity, maxHeight: 200) : self.frame(maxWidth: .infinity, minHeight: 100)
 	}
-}
-
-struct TippingOptionView_Previews: PreviewProvider {
-    static var previews: some View {
-		TippingOptionView(tippingOption: TippingOption(.percentage(5), preTipAmount: Money(amountCents: 1000)))
-    }
 }

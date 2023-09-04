@@ -29,11 +29,17 @@ struct TippingView: View {
 			Grid(alignment: .center, horizontalSpacing: StyleGuide.Spacing.buttonMargin, verticalSpacing: StyleGuide.Spacing.buttonMargin) {
 				GridRow {
 					ForEach(self.viewModel.tippingOptions, id: \.id) { tippingOption in
-						TippingOptionView(tippingOption: tippingOption)
+						TippingOptionView(
+							tippingOption: tippingOption,
+							tapAction: { self.viewModel.selectTip.send($0) }
+						)
 					}
 				}
 				
-				TippingOptionView(tippingOption: TippingOption(.noTip, preTipAmount: self.viewModel.preTipAmount))
+				TippingOptionView(
+					tippingOption: TippingOption(.noTip, preTipAmount: self.viewModel.preTipAmount),
+					tapAction: { self.viewModel.selectTip.send($0) }
+				)
 			}
 			.frame(width: 1020)
 			
