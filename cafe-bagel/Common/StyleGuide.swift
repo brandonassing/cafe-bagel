@@ -71,6 +71,6 @@ extension Text {
 
 extension StyleGuide {
 	enum Spacing {
-		static let buttonMargin: CGFloat = 30
+		static let buttonMargin: CGFloat = 20
 	}
 }

@@ -26,11 +26,16 @@ struct TippingView: View {
 			Spacer()
 				.frame(height: 60)
 			
-			HStack(alignment: .center, spacing: StyleGuide.Spacing.buttonMargin) {
-				ForEach(self.viewModel.tippingOptions, id: \.id) { tippingOption in
-					TippingOptionView(tippingOption: tippingOption)
+			Grid(alignment: .center, horizontalSpacing: StyleGuide.Spacing.buttonMargin, verticalSpacing: StyleGuide.Spacing.buttonMargin) {
+				GridRow {
+					ForEach(self.viewModel.tippingOptions, id: \.id) { tippingOption in
+						TippingOptionView(tippingOption: tippingOption)
+					}
 				}
+				
+				TippingOptionView(tippingOption: TippingOption(.noTip, preTipAmount: self.viewModel.preTipAmount))
 			}
+			.frame(width: 1020)
 			
 			Spacer()
 			

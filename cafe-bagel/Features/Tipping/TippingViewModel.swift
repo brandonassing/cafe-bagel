@@ -8,9 +8,9 @@ class TippingViewModel: ObservableObject {
 	
 	init() {
 		self.tippingOptions = [ // TODO: limit to 3 elements
-			TippingOption(percentage: 15, preTipAmount: self.preTipAmount),
-			TippingOption(percentage: 20, preTipAmount: self.preTipAmount),
-			TippingOption(percentage: 25, preTipAmount: self.preTipAmount),
+			TippingOption(.percentage(15), preTipAmount: self.preTipAmount),
+			TippingOption(.percentage(20), preTipAmount: self.preTipAmount),
+			TippingOption(.percentage(25), preTipAmount: self.preTipAmount),
 		]
 	}
 }
