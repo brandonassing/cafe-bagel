@@ -27,7 +27,7 @@ struct TippingOptionView: View {
 				Text(self.tippingOption.displayValue)
 					.textStyle(StyleGuide.TextStyle.blockButtonTitle(size: self.isPrimaryOption ? 60 : 30))
 				
-				if let tipAmount = self.tippingOption.moneyAmount?.displayValue {
+				if let tipAmount = self.tippingOption.moneyAmount?.displayPets {
 					Text(tipAmount)
 						.textStyle(StyleGuide.TextStyle.blockButtonSubtitle)
 				}

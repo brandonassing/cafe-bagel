@@ -11,7 +11,7 @@ struct TippingView: View {
 				.frame(height: 120)
 			
 			Group {
-				if let preTipAmount = self.viewModel.preTipAmount.displayValue {
+				if let preTipAmount = self.viewModel.preTipAmount.displayPets {
 					Text(preTipAmount)
 						.textStyle(StyleGuide.TextStyle.header, isBold: true)
 				}
