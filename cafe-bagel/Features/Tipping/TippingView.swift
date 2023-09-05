@@ -3,8 +3,7 @@ import SwiftUI
 
 struct TippingView: View {
 	@StateObject private var viewModel: TippingViewModel = TippingViewModel()
-	@State private var didSelectTip = false
-	@State private var initialSelectedTip: TippingOption?
+	@State private var showAlert: Bool = false
 
     var body: some View {
 		
@@ -33,28 +32,31 @@ struct TippingView: View {
 					ForEach(self.viewModel.tippingOptions, id: \.id) { tippingOption in
 						TippingOptionView(
 							tippingOption: tippingOption,
-							tapAction: { self.viewModel.selectTip.send($0) }
+							tapAction: { self.viewModel.tipTapped.send($0) }
 						)
 					}
 				}
 				
 				TippingOptionView(
 					tippingOption: TippingOption(.noTip, preTipAmount: self.viewModel.preTipAmount),
-					tapAction: { tippingOption in
-						self.didSelectTip = true
-						self.initialSelectedTip = tippingOption
-					}
+					tapAction: { self.viewModel.tipTapped.send($0) }
 				)
-				// TODO: move tip logic into vm and update to show messages for other options
-				.alert(
-					"Wow really?",
-					isPresented: self.$didSelectTip,
-					presenting: self.initialSelectedTip
-				) { tippingOption in
-					Button("Yes, I'm cheap") { self.viewModel.selectTip.send(tippingOption) }
-					Button("You've convinced me") { }
-				} message: { _ in Text("On Gladys' birthday?..") }
 			}
+			.onReceive(self.viewModel.$alert) { self.showAlert = $0 != nil }
+			// TODO: don't like default vals
+			.alert(
+				self.viewModel.alert?.title ?? "",
+				isPresented: self.$showAlert,
+				actions: {
+					Button(self.viewModel.alert?.confirmText ?? "") {
+						self.viewModel.tipConfirmed.send()
+					}
+					Button(self.viewModel.alert?.cancelText ?? "") {}
+				},
+				message: {
+					Text(self.viewModel.alert?.message ?? "")
+				}
+			)
 			.frame(width: 1020)
 			
 			Spacer()
@@ -75,8 +77,40 @@ struct TippingView: View {
 	}
 }
 
-struct TippingView_Previews: PreviewProvider {
-    static var previews: some View {
-		TippingView()
-    }
+extension TippingViewModel.Alert {
+	var title: String {
+		switch self {
+		case .noTip:
+			return "Wow, really?"
+		case .notHighestTip:
+			return "Hmm... 👀"
+		}
+	}
+	
+	var message: String {
+		switch self {
+		case .noTip:
+			return "On Gladys' birthday?.."
+		case .notHighestTip:
+			return "Guess you don't think Gladys' birthday is *that* special, eh?"
+		}
+	}
+	
+	var confirmText: String {
+		switch self {
+		case .noTip:
+			return "Yes, I'm cheap"
+		case .notHighestTip:
+			return "Sorry Gladys"
+		}
+	}
+
+	var cancelText: String {
+		switch self {
+		case .noTip:
+			return "I don't hate the hosts"
+		case .notHighestTip:
+			return "Today is a special day"
+		}
+	}
 }

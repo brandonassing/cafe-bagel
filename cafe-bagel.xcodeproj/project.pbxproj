@@ -16,6 +16,7 @@
 		5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859092AA2E98500C7BB3A /* TippingOptionView.swift */; };
 		5C18590D2AA2F06E00C7BB3A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */; };
 		5C1859122AA42E3400C7BB3A /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859112AA42E3400C7BB3A /* Money.swift */; };
+		5C1859152AA6A5CC00C7BB3A /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1859142AA6A5CC00C7BB3A /* CombineExt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C1859152AA6A5CC00C7BB3A /* CombineExt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,9 @@
 			dependencies = (
 			);
 			name = "cafe-bagel";
+			packageProductDependencies = (
+				5C1859142AA6A5CC00C7BB3A /* CombineExt */,
+			);
 			productName = "cafe-bagel";
 			productReference = 5C1858ED2AA2E1FF00C7BB3A /* cafe-bagel.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +163,9 @@
 				Base,
 			);
 			mainGroup = 5C1858E42AA2E1FF00C7BB3A;
+			packageReferences = (
+				5C1859132AA6A5CB00C7BB3A /* XCRemoteSwiftPackageReference "CombineExt" */,
+			);
 			productRefGroup = 5C1858EE2AA2E1FF00C7BB3A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -391,6 +399,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C1859132AA6A5CB00C7BB3A /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C1859142AA6A5CC00C7BB3A /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C1859132AA6A5CB00C7BB3A /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C1858E52AA2E1FF00C7BB3A /* Project object */;
 }
