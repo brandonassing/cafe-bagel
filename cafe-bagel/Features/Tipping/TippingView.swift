@@ -42,6 +42,8 @@ struct TippingView: View {
 					tapAction: { self.viewModel.tipTapped.send($0) }
 				)
 			}
+			.padding()
+			.frame(width: 1020)
 			.onReceive(self.viewModel.$alert) { self.showAlert = $0 != nil }
 			// TODO: don't like default vals
 			.alert(
@@ -57,7 +59,6 @@ struct TippingView: View {
 					Text(self.viewModel.alert?.message ?? "")
 				}
 			)
-			.frame(width: 1020)
 			
 			Spacer()
 			
