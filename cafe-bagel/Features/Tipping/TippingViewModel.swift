@@ -19,11 +19,14 @@ class TippingViewModel: ObservableObject {
 		self.tipTapped = CurrentValueSubject<TippingOption?, Never>(TippingOption?.none)
 		self.tipConfirmed = PassthroughSubject<Void, Never>()
 		
-		self.tippingOptions = [ // TODO: limit to 3 elements
-			TippingOption(.percentage(15), preTipAmount: self.preTipAmount),
-			TippingOption(.percentage(20), preTipAmount: self.preTipAmount),
-			TippingOption(.percentage(25), preTipAmount: self.preTipAmount),
-		]
+		let tippingOptions = [
+				TippingOption(.percentage(15), preTipAmount: self.preTipAmount),
+				TippingOption(.percentage(20), preTipAmount: self.preTipAmount),
+				TippingOption(.percentage(25), preTipAmount: self.preTipAmount),
+				TippingOption(.percentage(30), preTipAmount: self.preTipAmount),
+			]
+			.prefix(3)
+		self.tippingOptions = Array(tippingOptions)
 		
 		self.tipTapped
 			.sink { [weak self] tippingOption in
