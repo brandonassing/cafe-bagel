@@ -9,7 +9,7 @@ class TippingViewModel: ObservableObject {
 	@Published var preTipAmount: Money = Money(amountCents: 669)
 	@Published var tippingOptions: [TippingOption] = []
 	@Published var locale: String = "English"
-	@Published var alert: Alert? = nil
+	@Published var alert: Alert = .none
 	@Published var selectedTip: TippingOption? = nil
 	
 	private var disposables = Set<AnyCancellable>()
@@ -43,6 +43,7 @@ class TippingViewModel: ObservableObject {
 						let highestTipAmount = self.tippingOptions.last?.moneyAmount,
 						tipAmount.amountCents < highestTipAmount.amountCents
 					else {
+						self.alert = .none
 						self.tipConfirmed.send()
 						return
 					}
@@ -59,6 +60,8 @@ class TippingViewModel: ObservableObject {
 
 extension TippingViewModel {
 	enum Alert {
+		// represents no alert
+		case none
 		case noTip
 		case notHighestTip
 	}

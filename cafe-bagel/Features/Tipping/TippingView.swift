@@ -44,19 +44,18 @@ struct TippingView: View {
 			}
 			.padding()
 			.frame(width: 1020)
-			.onReceive(self.viewModel.$alert) { self.showAlert = $0 != nil }
-			// TODO: don't like default vals
+			.onReceive(self.viewModel.$alert) { self.showAlert = $0 != .none }
 			.alert(
-				self.viewModel.alert?.title ?? "",
+				self.viewModel.alert.title,
 				isPresented: self.$showAlert,
 				actions: {
-					Button(self.viewModel.alert?.confirmText ?? "") {
+					Button(self.viewModel.alert.confirmText) {
 						self.viewModel.tipConfirmed.send()
 					}
-					Button(self.viewModel.alert?.cancelText ?? "") {}
+					Button(self.viewModel.alert.cancelText) {}
 				},
 				message: {
-					Text(self.viewModel.alert?.message ?? "")
+					Text(self.viewModel.alert.message)
 				}
 			)
 			
@@ -81,6 +80,8 @@ struct TippingView: View {
 extension TippingViewModel.Alert {
 	var title: String {
 		switch self {
+		case .none:
+			return "" // Shouldn't be showing an alert
 		case .noTip:
 			return "Wow, really?"
 		case .notHighestTip:
@@ -90,6 +91,8 @@ extension TippingViewModel.Alert {
 	
 	var message: String {
 		switch self {
+		case .none:
+			return "" // Shouldn't be showing an alert
 		case .noTip:
 			return "On Gladys' birthday?.."
 		case .notHighestTip:
@@ -99,6 +102,8 @@ extension TippingViewModel.Alert {
 	
 	var confirmText: String {
 		switch self {
+		case .none:
+			return "" // Shouldn't be showing an alert
 		case .noTip:
 			return "Yes, I'm cheap"
 		case .notHighestTip:
@@ -108,6 +113,8 @@ extension TippingViewModel.Alert {
 
 	var cancelText: String {
 		switch self {
+		case .none:
+			return "" // Shouldn't be showing an alert
 		case .noTip:
 			return "I don't hate the hosts"
 		case .notHighestTip:
