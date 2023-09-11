@@ -6,7 +6,12 @@ class TippingViewModel: ObservableObject {
 	let tipTapped: CurrentValueSubject<TippingOption?, Never>
 	let tipConfirmed: PassthroughSubject<Void, Never>
 	
-	@Published var preTipAmount: Money = Money(amountCents: 669)
+	@Published var preTipAmount: Money = {
+		let dollarAmount = Int.random(in: 2...8)
+		let centsAddition = Bool.random() ? 50 : 0
+		let centsAmount = (dollarAmount * 100) + centsAddition
+		return Money(amountCents: centsAmount)
+	}()
 	@Published var tippingOptions: [TippingOption] = []
 	@Published var locale: String = "English"
 	@Published var alert: Alert = .none
