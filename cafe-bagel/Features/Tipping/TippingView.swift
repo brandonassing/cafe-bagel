@@ -4,6 +4,7 @@ import SwiftUI
 struct TippingView: View {
 	@StateObject private var viewModel: TippingViewModel = TippingViewModel()
 	@State private var showAlert: Bool = false
+	@State private var shouldAuth = false
 
     var body: some View {
 		
@@ -58,6 +59,7 @@ struct TippingView: View {
 					Text(self.viewModel.alert.message)
 				}
 			)
+			.onReceive(self.viewModel.$selectedTip) { self.shouldAuth = $0 != nil }
 			
 			Spacer()
 			
@@ -74,6 +76,9 @@ struct TippingView: View {
 			}
 		}
 		.padding()
+		.navigationDestination(isPresented: self.$shouldAuth) {
+			AuthView()
+		}
 	}
 }
 

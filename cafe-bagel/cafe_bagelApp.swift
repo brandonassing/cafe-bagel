@@ -5,7 +5,9 @@ import SwiftUI
 struct cafe_bagelApp: App {
     var body: some Scene {
         WindowGroup {
-			TippingView()
+			NavigationStack { // TODO: move this into cart building view
+				TippingView()
+			}
         }
     }
 }
