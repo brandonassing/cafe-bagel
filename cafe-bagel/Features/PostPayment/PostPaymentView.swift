@@ -6,6 +6,7 @@ struct PostPaymentView: View {
 	@Binding var navPath: [ViewType]
 
 	var body: some View {
+		// TODO: add amounts header
 		VStack {
 			HStack {
 				Button {
@@ -19,10 +20,20 @@ struct PostPaymentView: View {
 				Spacer()
 			}
 			.frame(maxWidth: .infinity)
-
-			Spacer()
 			
-			Text("Please come again!")
+			Spacer()
+
+			VStack(alignment: .center, spacing: 40) {
+				Image("LogoPostPayment")
+					.resizable()
+					.clipShape(Circle())
+					.overlay(Circle().stroke(.white, lineWidth: 16))
+					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 8))
+					.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
+											
+				Text("Thanks!")
+					.textStyle(.indicatorText, isBold: true)
+			}
 			
 			Spacer()
 			

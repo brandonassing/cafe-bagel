@@ -28,7 +28,7 @@ struct TippingView: View {
 			Spacer()
 				.frame(height: 60)
 			
-			Grid(alignment: .center, horizontalSpacing: StyleGuide.Spacing.buttonMargin, verticalSpacing: StyleGuide.Spacing.buttonMargin) {
+			Grid(alignment: .center, horizontalSpacing: StyleGuide.Size.buttonMargin, verticalSpacing: StyleGuide.Size.buttonMargin) {
 				GridRow {
 					ForEach(self.viewModel.tippingOptions, id: \.id) { tippingOption in
 						TippingOptionView(
