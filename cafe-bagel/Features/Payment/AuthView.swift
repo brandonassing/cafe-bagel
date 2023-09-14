@@ -18,7 +18,7 @@ struct AuthView: View {
 				Text("Authorizing")
 			}
 		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.padding()
 		.navigationBarBackButtonHidden(true)
     }
 }

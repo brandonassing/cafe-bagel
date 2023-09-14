@@ -13,7 +13,6 @@ class TippingViewModel: ObservableObject {
 		return Money(amountCents: centsAmount)
 	}()
 	@Published var tippingOptions: [TippingOption] = []
-	@Published var locale: String = "English"
 	@Published var alert: Alert = .none
 	@Published var selectedTip: TippingOption? = nil
 	

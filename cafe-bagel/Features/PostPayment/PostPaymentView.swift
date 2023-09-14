@@ -25,6 +25,8 @@ struct PostPaymentView: View {
 			Text("Please come again!")
 			
 			Spacer()
+			
+			LocaleButtonView()
 		}
 		.padding()
 		.navigationBarBackButtonHidden(true)
