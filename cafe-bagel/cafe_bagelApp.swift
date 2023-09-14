@@ -12,6 +12,7 @@ struct cafe_bagelApp: App {
 					.navigationDestination(for: ViewType.self) { viewType in
 						viewType.view(for: self.$navPath)
 					}
+					.navigationBarHidden(true)
 			}
         }
     }
