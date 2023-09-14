@@ -23,6 +23,9 @@
 		5CEF03802AB0092400D26EE9 /* PostPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037F2AB0092400D26EE9 /* PostPaymentViewModel.swift */; };
 		5CEF03832AB2970200D26EE9 /* LocaleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03822AB2970200D26EE9 /* LocaleButtonView.swift */; };
 		5CEF03852AB2971A00D26EE9 /* LocaleButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03842AB2971A00D26EE9 /* LocaleButtonViewModel.swift */; };
+		5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03892AB337B100D26EE9 /* Checkout.swift */; };
+		5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF038C2AB33C5B00D26EE9 /* CartBuildingView.swift */; };
+		5CEF038F2AB33DD700D26EE9 /* CartBuildingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF038E2AB33DD700D26EE9 /* CartBuildingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		5CEF037F2AB0092400D26EE9 /* PostPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentViewModel.swift; sourceTree = "<group>"; };
 		5CEF03822AB2970200D26EE9 /* LocaleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleButtonView.swift; sourceTree = "<group>"; };
 		5CEF03842AB2971A00D26EE9 /* LocaleButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleButtonViewModel.swift; sourceTree = "<group>"; };
+		5CEF03892AB337B100D26EE9 /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		5CEF038C2AB33C5B00D26EE9 /* CartBuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuildingView.swift; sourceTree = "<group>"; };
+		5CEF038E2AB33DD700D26EE9 /* CartBuildingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuildingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		5C1858FE2AA2E3FF00C7BB3A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5CEF038B2AB33C4900D26EE9 /* CartBuilding */,
 				5CEF037A2AB0085C00D26EE9 /* PostPayment */,
 				5CEF03752AA8A78100D26EE9 /* Payment */,
 				5C1858FF2AA2E44A00C7BB3A /* Tipping */,
@@ -118,6 +125,7 @@
 			children = (
 				5C1859012AA2E5D800C7BB3A /* TippingOption.swift */,
 				5C1859112AA42E3400C7BB3A /* Money.swift */,
+				5CEF03892AB337B100D26EE9 /* Checkout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +164,15 @@
 				5CEF03842AB2971A00D26EE9 /* LocaleButtonViewModel.swift */,
 			);
 			path = LocaleButton;
+			sourceTree = "<group>";
+		};
+		5CEF038B2AB33C4900D26EE9 /* CartBuilding */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF038C2AB33C5B00D26EE9 /* CartBuildingView.swift */,
+				5CEF038E2AB33DD700D26EE9 /* CartBuildingViewModel.swift */,
+			);
+			path = CartBuilding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,12 +253,15 @@
 			files = (
 				5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */,
 				5C1859022AA2E5D800C7BB3A /* TippingOption.swift in Sources */,
+				5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */,
 				5C1859122AA42E3400C7BB3A /* Money.swift in Sources */,
+				5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */,
 				5CEF03852AB2971A00D26EE9 /* LocaleButtonViewModel.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5C1859042AA2E61800C7BB3A /* TippingView.swift in Sources */,
 				5CEF03832AB2970200D26EE9 /* LocaleButtonView.swift in Sources */,
 				5CEF03802AB0092400D26EE9 /* PostPaymentViewModel.swift in Sources */,
+				5CEF038F2AB33DD700D26EE9 /* CartBuildingViewModel.swift in Sources */,
 				5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */,
 				5C1858F12AA2E1FF00C7BB3A /* cafe_bagelApp.swift in Sources */,
 				5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */,

@@ -11,9 +11,9 @@ struct AuthView: View {
 	@State private var animateStart = false
 	@State private var animateEnd = true
 
-	init(navPath: Binding<[ViewType]>, preTipAmount: Money, selectedTip: TippingOption) {
+	init(navPath: Binding<[ViewType]>, checkout: Checkout) {
 		self._navPath = navPath
-		self.viewModel = AuthViewModel(preTipAmount: preTipAmount, selectedTip: selectedTip)
+		self.viewModel = AuthViewModel(checkout: checkout)
 	}
 	
     var body: some View {
@@ -30,12 +30,13 @@ struct AuthView: View {
 					.textStyle(.indicatorText, isBold: true)
 					.onAppear {
 						DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-							self.navPath.append(.postPayment)
+							self.navPath.append(.postPayment(checkout: self.viewModel.checkout))
 						}
 					}
 			} else {
 				ZStack {
 					if self.viewModel.isNoTip {
+						// TODO: play shame audio
 						Image("BagelSad")
 							.resizable()
 							.clipShape(Circle())

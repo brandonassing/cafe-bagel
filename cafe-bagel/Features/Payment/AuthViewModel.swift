@@ -3,11 +3,23 @@ import Foundation
 import Combine
 
 class AuthViewModel: ObservableObject {
-	@Published var isAuthorized: Bool = false
+	@Published var checkout: Checkout
+	@Published var preTipAmount: Money
+	@Published var tipAmount: Money?
+	@Published var totalAmount: Money
 	@Published var isNoTip: Bool
-	
-	init(preTipAmount: Money, selectedTip: TippingOption) {
-		self.isNoTip = (selectedTip.tipType == .noTip)
+	@Published var isAuthorized: Bool
+
+	init(checkout: Checkout) {
+		// MARK: Output defaults
+		self.checkout = checkout
+		self.preTipAmount = checkout.preTipAmount
+		self.tipAmount = checkout.tipAmount
+		self.totalAmount = checkout.totalAmount
+		self.isNoTip = (checkout.selectedTip?.tipType == .noTip)
+		self.isAuthorized = false
+		
+		// MARK: Functionality
 		
 		// TODO: bug where this gets fired multiple times due to how SwiftUI calls init multiple times
 		// TODO: use combine delay instead

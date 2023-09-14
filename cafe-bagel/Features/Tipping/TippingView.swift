@@ -2,10 +2,15 @@
 import SwiftUI
 
 struct TippingView: View {
-	@StateObject private var viewModel: TippingViewModel = TippingViewModel(preTipAmount: Money.random())
+	@ObservedObject private var viewModel: TippingViewModel
 	@State private var showAlert: Bool = false
 	@Binding var navPath: [ViewType]
 
+	init(navPath: Binding<[ViewType]>, checkout: Checkout) {
+		self._navPath = navPath
+		self.viewModel = TippingViewModel(checkout: checkout)
+	}
+	
     var body: some View {
 		
 		VStack {
@@ -13,9 +18,11 @@ struct TippingView: View {
 				.frame(height: 120)
 			
 			Group {
-				if let preTipAmount = self.viewModel.preTipAmount.displayPets {
-					Text(preTipAmount)
+				// TODO: make header reusable component
+				if let displayAmount = self.viewModel.totalAmount.displayPets {
+					Text(displayAmount)
 						.textStyle(StyleGuide.TextStyle.header, isBold: true)
+					// TODO: show updating tip amount
 				}
 
 				Spacer()
@@ -59,9 +66,9 @@ struct TippingView: View {
 					Text(self.viewModel.alert.message)
 				}
 			)
-			.onReceive(self.viewModel.$selectedTip) { selectedTip in
-				if let selectedTip {
-					self.navPath.append(.auth(preTipAmount: self.viewModel.preTipAmount, selectedTip: selectedTip))
+			.onReceive(self.viewModel.$tipSelected) { tipSelected in
+				if tipSelected {
+					self.navPath.append(.auth(checkout: self.viewModel.checkout))
 				}
 			}
 			
@@ -70,7 +77,6 @@ struct TippingView: View {
 			LocaleButtonView()
 		}
 		.padding()
-		.onAppear { self.viewModel.randomizePreTipAmount.send() }
 	}
 }
 

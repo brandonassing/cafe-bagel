@@ -3,38 +3,32 @@ import Combine
 import CombineExt
 
 class TippingViewModel: ObservableObject {
-	// TODO: remove random amount once cart building available
-	let randomizePreTipAmount: PassthroughSubject<Void, Never>
 	let tipTapped: CurrentValueSubject<TippingOption?, Never>
 	let tipConfirmed: PassthroughSubject<Void, Never>
 	
+	@Published var checkout: Checkout
 	@Published var preTipAmount: Money
-	@Published var tippingOptions: [TippingOption] = []
-	@Published var alert: Alert = .none
-	@Published var selectedTip: TippingOption? = nil
+	@Published var totalAmount: Money
+	@Published var tippingOptions: [TippingOption]
+	@Published var alert: Alert
+	@Published var tipSelected: Bool
 	
 	private var disposables = Set<AnyCancellable>()
 
-	init(preTipAmount: Money) {
-		self.randomizePreTipAmount = PassthroughSubject<Void, Never>()
+	init(checkout: Checkout) {
+		// MARK: Inputs
 		self.tipTapped = CurrentValueSubject<TippingOption?, Never>(TippingOption?.none)
 		self.tipConfirmed = PassthroughSubject<Void, Never>()
 		
-		self.preTipAmount = preTipAmount
+		// MARK: Output defaults
+		self.checkout = checkout
+		self.preTipAmount = checkout.preTipAmount
+		self.totalAmount = checkout.totalAmount
+		self.tippingOptions = checkout.tippingOptions
+		self.alert = .none
+		self.tipSelected = false
 		
-		self.randomizePreTipAmount
-			.map { _ in Money.random() }
-			.assign(to: &self.$preTipAmount)
-		
-		let tippingOptions = [
-				TippingOption(.percentage(15), preTipAmount: self.preTipAmount),
-				TippingOption(.percentage(20), preTipAmount: self.preTipAmount),
-				TippingOption(.percentage(25), preTipAmount: self.preTipAmount),
-				TippingOption(.percentage(30), preTipAmount: self.preTipAmount),
-			]
-			.prefix(3)
-		self.tippingOptions = Array(tippingOptions)
-		
+		// MARK: Functionality
 		self.tipTapped
 			.sink { [weak self] tippingOption in
 				guard let self, let tippingOption else { return }
@@ -61,7 +55,12 @@ class TippingViewModel: ObservableObject {
 		
 		self.tipConfirmed
 			.withLatestFrom(self.tipTapped)
-			.assign(to: &self.$selectedTip)
+			.sink(receiveValue: { [weak self] tippingOption in
+				guard let self else { return }
+				self.checkout.selectedTip = tippingOption
+				self.tipSelected = true
+			})
+			.store(in: &self.disposables)
 	}
 }
 
