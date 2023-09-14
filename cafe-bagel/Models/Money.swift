@@ -30,3 +30,12 @@ extension Money {
 		return "\(formattedString ?? "0") pets"
 	}
 }
+
+extension Money {
+	static func random() -> Money {
+		let dollarAmount = Int.random(in: 2...8)
+		let centsAddition = Bool.random() ? 50 : 0
+		let centsAmount = (dollarAmount * 100) + centsAddition
+		return Money(amountCents: centsAmount)
+	}
+}

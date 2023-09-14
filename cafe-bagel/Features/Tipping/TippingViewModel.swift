@@ -3,25 +3,28 @@ import Combine
 import CombineExt
 
 class TippingViewModel: ObservableObject {
+	// TODO: remove random amount once cart building available
+	let randomizePreTipAmount: PassthroughSubject<Void, Never>
 	let tipTapped: CurrentValueSubject<TippingOption?, Never>
 	let tipConfirmed: PassthroughSubject<Void, Never>
 	
-	@Published var preTipAmount: Money = {
-		let dollarAmount = Int.random(in: 2...8)
-		let centsAddition = Bool.random() ? 50 : 0
-		let centsAmount = (dollarAmount * 100) + centsAddition
-		return Money(amountCents: centsAmount)
-	}()
+	@Published var preTipAmount: Money
 	@Published var tippingOptions: [TippingOption] = []
 	@Published var alert: Alert = .none
 	@Published var selectedTip: TippingOption? = nil
 	
 	private var disposables = Set<AnyCancellable>()
 
-	init() {
-		
+	init(preTipAmount: Money) {
+		self.randomizePreTipAmount = PassthroughSubject<Void, Never>()
 		self.tipTapped = CurrentValueSubject<TippingOption?, Never>(TippingOption?.none)
 		self.tipConfirmed = PassthroughSubject<Void, Never>()
+		
+		self.preTipAmount = preTipAmount
+		
+		self.randomizePreTipAmount
+			.map { _ in Money.random() }
+			.assign(to: &self.$preTipAmount)
 		
 		let tippingOptions = [
 				TippingOption(.percentage(15), preTipAmount: self.preTipAmount),

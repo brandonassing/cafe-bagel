@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct TippingView: View {
-	@StateObject private var viewModel: TippingViewModel = TippingViewModel()
+	@StateObject private var viewModel: TippingViewModel = TippingViewModel(preTipAmount: Money.random())
 	@State private var showAlert: Bool = false
 	@Binding var navPath: [ViewType]
 
@@ -70,6 +70,7 @@ struct TippingView: View {
 			LocaleButtonView()
 		}
 		.padding()
+		.onAppear { self.viewModel.randomizePreTipAmount.send() }
 	}
 }
 
