@@ -30,15 +30,13 @@ struct PostPaymentView: View {
 			}
 			
 			VStack {
-				if let displayAmount = self.viewModel.totalAmount.displayPets {
-					Spacer()
-						.frame(height: 120)
+				Spacer()
+					.frame(height: 120)
 
-					Text(displayAmount)
-						.textStyle(StyleGuide.TextStyle.header, isBold: true)
-					
-					Spacer()
-				}
+				Text(self.viewModel.totalAmount.displayPets)
+					.textStyle(StyleGuide.TextStyle.header, isBold: true)
+				
+				Spacer()
 			}
 
 			VStack(alignment: .center, spacing: 40) {

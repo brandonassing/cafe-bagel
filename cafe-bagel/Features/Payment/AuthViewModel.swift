@@ -16,7 +16,7 @@ class AuthViewModel: ObservableObject {
 		self.preTipAmount = checkout.preTipAmount
 		self.tipAmount = checkout.tipAmount
 		self.totalAmount = checkout.totalAmount
-		self.isNoTip = (checkout.selectedTip?.tipType == .noTip)
+		self.isNoTip = checkout.hasNoTip
 		self.isAuthorized = false
 		
 		// MARK: Functionality

@@ -18,6 +18,13 @@ class Checkout {
 	
 	var tippingOptions: [TippingOption]
 	
+	var hasNoTip: Bool {
+		guard let selectedTip else { return true }
+		guard let tipAmountCents = tipAmount?.amountCents else { return true}
+		
+		return selectedTip.tipType == .noTip || tipAmountCents == 0
+	}
+	
 	init(preTipAmount: Money) {
 		self.preTipAmount = preTipAmount
 		self.tippingOptions = {

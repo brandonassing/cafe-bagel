@@ -6,17 +6,17 @@ struct Money: Equatable {
 }
 
 extension Money {
-	var displayValue: String? {
+	var displayValue: String {
 		let dollars = self.amountCents / 100
 		let remaindingCents = Float(self.amountCents % 100) / 100
 		
 		let numberFormatter = NumberFormatter()
 		numberFormatter.numberStyle = .currency
 
-		return numberFormatter.string(for: Float(dollars) + remaindingCents)
+		return numberFormatter.string(for: Float(dollars) + remaindingCents) ?? "\(self.amountCents) cents"
 	}
 	
-	var displayPets: String? {
+	var displayPets: String {
 		let dollars = self.amountCents / 100
 		let remaindingCents = Float(self.amountCents % 100) / 100
 		
@@ -26,8 +26,10 @@ extension Money {
 		numberFormatter.maximumFractionDigits = 2
 		numberFormatter.minimumFractionDigits = 2
 
-		let formattedString = numberFormatter.string(for: Float(dollars) + remaindingCents)
-		return "\(formattedString ?? "0") pets"
+		guard let formattedString = numberFormatter.string(for: Float(dollars) + remaindingCents) else {
+			return "\(self.amountCents) pets in cents"
+		}
+		return "\(formattedString) pets"
 	}
 }
 

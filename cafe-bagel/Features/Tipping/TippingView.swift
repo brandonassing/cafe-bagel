@@ -19,11 +19,9 @@ struct TippingView: View {
 			
 			Group {
 				// TODO: make header reusable component
-				if let displayAmount = self.viewModel.totalAmount.displayPets {
-					Text(displayAmount)
-						.textStyle(StyleGuide.TextStyle.header, isBold: true)
-					// TODO: show updating tip amount
-				}
+				Text(self.viewModel.totalAmount.displayPets)
+					.textStyle(StyleGuide.TextStyle.header, isBold: true)
+				// TODO: show updating tip amount
 
 				Spacer()
 					.frame(height: 120)
