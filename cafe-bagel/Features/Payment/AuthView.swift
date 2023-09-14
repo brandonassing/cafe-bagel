@@ -5,6 +5,8 @@ struct AuthView: View {
 	@ObservedObject private var viewModel: AuthViewModel
 	@Binding var navPath: [ViewType]
 
+	@State private var showAuthorized = false
+
 	@State private var isCircleRotating = true
 	@State private var animateStart = false
 	@State private var animateEnd = true
@@ -18,7 +20,7 @@ struct AuthView: View {
 		// TODO: add amounts header
 
 		VStack(alignment: .center, spacing: 40) {
-			if self.viewModel.isAuthorized {
+			if self.showAuthorized {
 				Image("AuthCheckmark")
 					.resizable()
 					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 8))
@@ -83,5 +85,10 @@ struct AuthView: View {
 		}
 		.padding()
 		.navigationBarBackButtonHidden(true)
+		.onReceive(self.viewModel.$isAuthorized) {
+			if $0 {
+				self.showAuthorized = $0
+			}
+		}
     }
 }
