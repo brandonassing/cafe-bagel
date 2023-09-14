@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Money {
+struct Money: Equatable {
 	let amountCents: Int
 }
 

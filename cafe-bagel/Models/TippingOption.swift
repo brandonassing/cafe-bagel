@@ -18,7 +18,7 @@ struct TippingOption: Identifiable {
 		}
 	}
 	
-	enum TipType {
+	enum TipType: Equatable {
 		case noTip
 		case percentage(Int)
 	}

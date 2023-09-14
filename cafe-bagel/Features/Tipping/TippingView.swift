@@ -59,9 +59,9 @@ struct TippingView: View {
 					Text(self.viewModel.alert.message)
 				}
 			)
-			.onReceive(self.viewModel.$selectedTip) {
-				if $0 != nil {
-					self.navPath.append(.auth)
+			.onReceive(self.viewModel.$selectedTip) { selectedTip in
+				if let selectedTip {
+					self.navPath.append(.auth(preTipAmount: self.viewModel.preTipAmount, selectedTip: selectedTip))
 				}
 			}
 			
