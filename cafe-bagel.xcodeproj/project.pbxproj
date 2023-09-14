@@ -18,6 +18,9 @@
 		5C1859122AA42E3400C7BB3A /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859112AA42E3400C7BB3A /* Money.swift */; };
 		5C1859152AA6A5CC00C7BB3A /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1859142AA6A5CC00C7BB3A /* CombineExt */; };
 		5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */; };
+		5CEF03792AB0010200D26EE9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */; };
+		5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */; };
+		5CEF03802AB0092400D26EE9 /* PostPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037F2AB0092400D26EE9 /* PostPaymentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		5C1859112AA42E3400C7BB3A /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentView.swift; sourceTree = "<group>"; };
+		5CEF037F2AB0092400D26EE9 /* PostPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 		5C1858FE2AA2E3FF00C7BB3A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5CEF037A2AB0085C00D26EE9 /* PostPayment */,
 				5CEF03752AA8A78100D26EE9 /* Payment */,
 				5C1858FF2AA2E44A00C7BB3A /* Tipping */,
 			);
@@ -123,8 +130,18 @@
 			isa = PBXGroup;
 			children = (
 				5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */,
+				5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		5CEF037A2AB0085C00D26EE9 /* PostPayment */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */,
+				5CEF037F2AB0092400D26EE9 /* PostPaymentViewModel.swift */,
+			);
+			path = PostPayment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,9 +225,12 @@
 				5C1859122AA42E3400C7BB3A /* Money.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5C1859042AA2E61800C7BB3A /* TippingView.swift in Sources */,
+				5CEF03802AB0092400D26EE9 /* PostPaymentViewModel.swift in Sources */,
+				5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */,
 				5C1858F12AA2E1FF00C7BB3A /* cafe_bagelApp.swift in Sources */,
 				5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */,
 				5C18590D2AA2F06E00C7BB3A /* StyleGuide.swift in Sources */,
+				5CEF03792AB0010200D26EE9 /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

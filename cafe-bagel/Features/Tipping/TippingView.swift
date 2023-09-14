@@ -4,7 +4,7 @@ import SwiftUI
 struct TippingView: View {
 	@StateObject private var viewModel: TippingViewModel = TippingViewModel()
 	@State private var showAlert: Bool = false
-	@State private var shouldAuth = false
+	@Binding var navPath: [ViewType]
 
     var body: some View {
 		
@@ -59,10 +59,15 @@ struct TippingView: View {
 					Text(self.viewModel.alert.message)
 				}
 			)
-			.onReceive(self.viewModel.$selectedTip) { self.shouldAuth = $0 != nil }
+			.onReceive(self.viewModel.$selectedTip) {
+				if $0 != nil {
+					self.navPath.append(.auth)
+				}
+			}
 			
 			Spacer()
 			
+			// TODO: make this a component and reuse on each screen
 			Button {
 				// TODO: replace with SKStoreProductViewController to open app store in modal
 				if let url = URL(string: "https://apps.apple.com/ca/app/duolingo-language-lessons/id570060128") {
@@ -76,9 +81,6 @@ struct TippingView: View {
 			}
 		}
 		.padding()
-		.navigationDestination(isPresented: self.$shouldAuth) {
-			AuthView()
-		}
 	}
 }
 
