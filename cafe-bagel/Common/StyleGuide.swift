@@ -15,6 +15,7 @@ extension StyleGuide.Colour {
 		static let light = Color.white
 		static let dark = StyleGuide.Colour.dark
 		static let inlineButton = StyleGuide.Colour.primary
+		static let grey = Color(red: 0.25, green: 0.25, blue: 0.25)
 	}
 }
 
@@ -26,6 +27,7 @@ extension StyleGuide {
 		case blockButtonSubtitle
 		case inlineButton
 		case indicatorText
+		case details
 		
 		var color: Color {
 			switch self {
@@ -35,6 +37,8 @@ extension StyleGuide {
 				return StyleGuide.Colour.Text.light
 			case .inlineButton:
 				return StyleGuide.Colour.Text.inlineButton
+			case .details:
+				return StyleGuide.Colour.Text.grey
 			}
 		}
 		
@@ -51,6 +55,8 @@ extension StyleGuide {
 			case .inlineButton:
 				return Font(CTFont(.miniSystem, size: 25))
 			case .indicatorText:
+				return Font(CTFont(.message, size: 35))
+			case .details:
 				return Font(CTFont(.message, size: 30))
 			}
 		}

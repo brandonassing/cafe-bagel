@@ -31,10 +31,13 @@ struct PostPaymentView: View {
 			
 			VStack {
 				Spacer()
-					.frame(height: 120)
-
-				Text(self.viewModel.totalAmount.displayPets)
-					.textStyle(StyleGuide.TextStyle.header, isBold: true)
+					.frame(height: 100)
+				
+				AmountsHeaderView(
+					preTipAmount: self.viewModel.preTipAmount,
+					tipAmount: self.viewModel.tipAmount,
+					totalAmount: self.viewModel.totalAmount
+				)
 				
 				Spacer()
 			}
@@ -43,8 +46,8 @@ struct PostPaymentView: View {
 				Image("LogoPostPayment")
 					.resizable()
 					.clipShape(Circle())
-					.overlay(Circle().stroke(.white, lineWidth: 16))
-					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 8))
+					.overlay(Circle().stroke(.white, lineWidth: 12))
+					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 6))
 					.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
 
 				Text("Thanks!")

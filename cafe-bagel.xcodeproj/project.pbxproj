@@ -26,6 +26,7 @@
 		5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03892AB337B100D26EE9 /* Checkout.swift */; };
 		5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF038C2AB33C5B00D26EE9 /* CartBuildingView.swift */; };
 		5CEF038F2AB33DD700D26EE9 /* CartBuildingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF038E2AB33DD700D26EE9 /* CartBuildingViewModel.swift */; };
+		5CEF03922AB3FB8D00D26EE9 /* AmountsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03912AB3FB8D00D26EE9 /* AmountsHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		5CEF03892AB337B100D26EE9 /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
 		5CEF038C2AB33C5B00D26EE9 /* CartBuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuildingView.swift; sourceTree = "<group>"; };
 		5CEF038E2AB33DD700D26EE9 /* CartBuildingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuildingViewModel.swift; sourceTree = "<group>"; };
+		5CEF03912AB3FB8D00D26EE9 /* AmountsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		5C18590B2AA2F06400C7BB3A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5CEF03902AB3FB7A00D26EE9 /* AmountsHeader */,
 				5CEF03862AB2972000D26EE9 /* LocaleButton */,
 				5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */,
 			);
@@ -173,6 +176,14 @@
 				5CEF038E2AB33DD700D26EE9 /* CartBuildingViewModel.swift */,
 			);
 			path = CartBuilding;
+			sourceTree = "<group>";
+		};
+		5CEF03902AB3FB7A00D26EE9 /* AmountsHeader */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF03912AB3FB8D00D26EE9 /* AmountsHeaderView.swift */,
+			);
+			path = AmountsHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */,
+				5CEF03922AB3FB8D00D26EE9 /* AmountsHeaderView.swift in Sources */,
 				5C1859022AA2E5D800C7BB3A /* TippingOption.swift in Sources */,
 				5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */,
 				5C1859122AA42E3400C7BB3A /* Money.swift in Sources */,

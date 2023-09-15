@@ -8,6 +8,7 @@ class TippingViewModel: ObservableObject {
 	
 	@Published var checkout: Checkout
 	@Published var preTipAmount: Money
+	@Published var tipAmount: Money?
 	@Published var totalAmount: Money
 	@Published var tippingOptions: [TippingOption]
 	@Published var alert: Alert
@@ -23,6 +24,7 @@ class TippingViewModel: ObservableObject {
 		// MARK: Output defaults
 		self.checkout = checkout
 		self.preTipAmount = checkout.preTipAmount
+		self.tipAmount = nil
 		self.totalAmount = checkout.totalAmount
 		self.tippingOptions = checkout.tippingOptions
 		self.alert = .none
@@ -58,6 +60,8 @@ class TippingViewModel: ObservableObject {
 			.sink(receiveValue: { [weak self] tippingOption in
 				guard let self else { return }
 				self.checkout.selectedTip = tippingOption
+				self.tipAmount = self.checkout.tipAmount
+				self.totalAmount = self.checkout.totalAmount
 				self.tipSelected = true
 			})
 			.store(in: &self.disposables)

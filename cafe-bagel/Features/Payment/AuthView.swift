@@ -17,71 +17,84 @@ struct AuthView: View {
 	}
 	
     var body: some View {
-		// TODO: add amounts header
+		ZStack {
+			VStack {
+				Spacer()
+					.frame(height: 100)
+				
+				AmountsHeaderView(
+					preTipAmount: self.viewModel.preTipAmount,
+					tipAmount: self.viewModel.tipAmount,
+					totalAmount: self.viewModel.totalAmount
+				)
+				
+				Spacer()
+			}
 
-		VStack(alignment: .center, spacing: 40) {
-			if self.showAuthorized {
-				Image("AuthCheckmark")
-					.resizable()
-					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 8))
-					.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
-
-				Text("Approved")
-					.textStyle(.indicatorText, isBold: true)
-					.onAppear {
-						DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-							self.navPath.append(.postPayment(checkout: self.viewModel.checkout))
-						}
-					}
-			} else {
-				ZStack {
-					if self.viewModel.isNoTip {
-						// TODO: play shame audio
-						Image("BagelSad")
-							.resizable()
-							.clipShape(Circle())
-							.overlay(Circle().stroke(.white, lineWidth: 16))
-							.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
-					}
-					
-					Circle()
-						.trim(
-							from: animateStart ? 1/3 : 1/9,
-							to: animateEnd ? 2/5 : 1
-						)
-						.stroke(lineWidth: 8)
-						.rotationEffect(.degrees(isCircleRotating ? 360 : 0))
-						.foregroundColor(StyleGuide.Colour.dark)
+			VStack(alignment: .center, spacing: 40) {
+				if self.showAuthorized {
+					Image("AuthCheckmark")
+						.resizable()
+						.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 6))
 						.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
-						.onAppear() {
-							withAnimation(
-								Animation
-									.linear(duration: 1)
-									.repeatForever(autoreverses: false)
-							) {
-								self.isCircleRotating.toggle()
-							}
-							withAnimation(
-								Animation
-									.linear(duration: 1)
-									.delay(0.5)
-									.repeatForever(autoreverses: true)
-							) {
-								self.animateStart.toggle()
-							}
-							withAnimation(
-								Animation
-									.linear(duration: 1)
-									.delay(1)
-									.repeatForever(autoreverses: true)
-							) {
-								self.animateEnd.toggle()
+
+					Text("Approved")
+						.textStyle(.indicatorText, isBold: true)
+						.onAppear {
+							DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+								self.navPath.append(.postPayment(checkout: self.viewModel.checkout))
 							}
 						}
-				}
+				} else {
+					ZStack {
+						if self.viewModel.isNoTip {
+							// TODO: play shame audio
+							Image("BagelSad")
+								.resizable()
+								.clipShape(Circle())
+								.overlay(Circle().stroke(.white, lineWidth: 12))
+								.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
+						}
+						
+						Circle()
+							.trim(
+								from: animateStart ? 1/3 : 1/9,
+								to: animateEnd ? 2/5 : 1
+							)
+							.stroke(lineWidth: 6)
+							.rotationEffect(.degrees(isCircleRotating ? 360 : 0))
+							.foregroundColor(StyleGuide.Colour.dark)
+							.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
+							.onAppear() {
+								withAnimation(
+									Animation
+										.linear(duration: 1)
+										.repeatForever(autoreverses: false)
+								) {
+									self.isCircleRotating.toggle()
+								}
+								withAnimation(
+									Animation
+										.linear(duration: 1)
+										.delay(0.5)
+										.repeatForever(autoreverses: true)
+								) {
+									self.animateStart.toggle()
+								}
+								withAnimation(
+									Animation
+										.linear(duration: 1)
+										.delay(1)
+										.repeatForever(autoreverses: true)
+								) {
+									self.animateEnd.toggle()
+								}
+							}
+					}
 
-				Text("Processing")
-					.textStyle(.indicatorText, isBold: true)
+					Text("Processing")
+						.textStyle(.indicatorText, isBold: true)
+				}
 			}
 		}
 		.padding()

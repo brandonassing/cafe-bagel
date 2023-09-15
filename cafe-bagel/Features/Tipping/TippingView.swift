@@ -15,12 +15,14 @@ struct TippingView: View {
 		
 		VStack {
 			Spacer()
-				.frame(height: 120)
+				.frame(height: 100)
 			
 			Group {
-				// TODO: make header reusable component
-				Text(self.viewModel.totalAmount.displayPets)
-					.textStyle(StyleGuide.TextStyle.header, isBold: true)
+				AmountsHeaderView(
+					preTipAmount: self.viewModel.preTipAmount,
+					tipAmount: self.viewModel.tipAmount,
+					totalAmount: self.viewModel.totalAmount
+				)
 				// TODO: show updating tip amount
 
 				Spacer()
