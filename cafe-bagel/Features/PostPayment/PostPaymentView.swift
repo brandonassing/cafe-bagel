@@ -11,7 +11,6 @@ struct PostPaymentView: View {
 	}
 
 	var body: some View {
-		// TODO: don't love the ZStack approach since things can technically overlay eachother
 		ZStack {
 			VStack {
 				HStack {
@@ -30,19 +29,13 @@ struct PostPaymentView: View {
 			}
 			
 			VStack {
-				Spacer()
-					.frame(height: 100)
-				
 				AmountsHeaderView(
 					preTipAmount: self.viewModel.preTipAmount,
 					tipAmount: self.viewModel.tipAmount,
 					totalAmount: self.viewModel.totalAmount
 				)
+				.padding(StyleGuide.Size.amountHeaderPadding)
 				
-				Spacer()
-			}
-
-			VStack(alignment: .center, spacing: 40) {
 				Image("LogoPostPayment")
 					.resizable()
 					.clipShape(Circle())
@@ -50,11 +43,12 @@ struct PostPaymentView: View {
 					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 6))
 					.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
 
+				Spacer()
+					.frame(height: 40)
+				
 				Text("Thanks!")
 					.textStyle(.indicatorText, isBold: true)
-			}
-			
-			VStack {
+				
 				Spacer()
 				LocaleButtonView()
 			}

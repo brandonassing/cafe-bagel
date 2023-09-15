@@ -15,21 +15,16 @@ struct AuthView: View {
 	}
 	
     var body: some View {
-		ZStack {
-			VStack {
-				Spacer()
-					.frame(height: 100)
-				
-				AmountsHeaderView(
-					preTipAmount: self.viewModel.preTipAmount,
-					tipAmount: self.viewModel.tipAmount,
-					totalAmount: self.viewModel.totalAmount
-				)
-				
-				Spacer()
-			}
+		VStack {
+			AmountsHeaderView(
+				preTipAmount: self.viewModel.preTipAmount,
+				tipAmount: self.viewModel.tipAmount,
+				totalAmount: self.viewModel.totalAmount
+			)
+			.padding(StyleGuide.Size.amountHeaderPadding)
 			.animation(nil, value: UUID()) // Prevents AmountsHeaderView from (somehow) being affected by Circle animation
 
+			// TODO: bug, entire VStack is animating downwards. Not happening on device though?
 			VStack(alignment: .center, spacing: 40) {
 				if self.viewModel.isAuthorized {
 					Image("AuthCheckmark")
@@ -56,12 +51,11 @@ struct AuthView: View {
 						
 						Circle()
 							.trim(
-								from: animateStart ? 1/3 : 1/9,
-								to: animateEnd ? 2/5 : 1
+								from: self.animateStart ? 1/3 : 1/9,
+								to: self.animateEnd ? 2/5 : 1
 							)
-							.stroke(lineWidth: 6)
-							.rotationEffect(.degrees(isCircleRotating ? 360 : 0))
-							.foregroundColor(StyleGuide.Colour.dark)
+							.stroke(StyleGuide.Colour.dark, lineWidth: 6)
+							.rotationEffect(.degrees(self.isCircleRotating ? 360 : 0))
 							.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
 							.onAppear() {
 								withAnimation(
@@ -94,6 +88,8 @@ struct AuthView: View {
 						.textStyle(.indicatorText, isBold: true)
 				}
 			}
+			
+			Spacer()
 		}
 		.padding()
 		.navigationBarBackButtonHidden(true)

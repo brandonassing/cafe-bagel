@@ -14,25 +14,18 @@ struct TippingView: View {
     var body: some View {
 		
 		VStack {
-			Spacer()
-				.frame(height: 100)
-			
-			Group {
-				AmountsHeaderView(
-					preTipAmount: self.viewModel.preTipAmount,
-					tipAmount: nil, // TODO: display dynamic tip amount for custom tip, and update header to display total
-					totalAmount: self.viewModel.preTipAmount
-				)
+			AmountsHeaderView(
+				preTipAmount: self.viewModel.preTipAmount,
+				tipAmount: nil, // TODO: display dynamic tip amount for custom tip, and update header to display total
+				totalAmount: self.viewModel.preTipAmount
+			)
+			.padding(StyleGuide.Size.amountHeaderPadding)
 
-				Spacer()
-					.frame(height: 120)
-				
-				Text("Add a tip?")
-					.textStyle(StyleGuide.TextStyle.subheader)
-			}
+			Text("Add a tip?")
+				.textStyle(StyleGuide.TextStyle.subheader)
 
 			Spacer()
-				.frame(height: 60)
+				.frame(height: 40)
 			
 			Grid(alignment: .center, horizontalSpacing: StyleGuide.Size.buttonMargin, verticalSpacing: StyleGuide.Size.buttonMargin) {
 				GridRow {
@@ -49,8 +42,7 @@ struct TippingView: View {
 					tapAction: { self.viewModel.tipTapped.send($0) }
 				)
 			}
-			.padding()
-			.frame(width: 1020)
+			.padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 50))
 			.onReceive(self.viewModel.$alert) { self.showAlert = $0 != .none }
 			.alert(
 				self.viewModel.alert.title,

@@ -6,7 +6,6 @@ struct LocaleButtonView: View {
 	
     var body: some View {
 		Button {
-			// TODO: replace with SKStoreProductViewController to open app store in modal
 			if let url = URL(string: "https://apps.apple.com/ca/app/duolingo-language-lessons/id570060128") {
 				UIApplication.shared.open(url)
 			}

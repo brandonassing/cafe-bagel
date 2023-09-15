@@ -25,7 +25,7 @@ struct TippingOptionView: View {
 		} label: {
 			VStack {
 				Text(self.tippingOption.displayValue)
-					.textStyle(StyleGuide.TextStyle.blockButtonTitle(size: self.isPrimaryOption ? 60 : 30))
+					.textStyle(StyleGuide.TextStyle.blockButtonTitle(size: self.isPrimaryOption ? 50 : 25))
 				
 				if let tipAmount = self.tippingOption.moneyAmount?.displayPets {
 					Text(tipAmount)
@@ -42,6 +42,6 @@ struct TippingOptionView: View {
 
 fileprivate extension View {
 	func frame(isPrimaryButton: Bool) -> some View {
-		return isPrimaryButton ? self.frame(maxWidth: .infinity, maxHeight: 200) : self.frame(maxWidth: .infinity, minHeight: 100)
+		return isPrimaryButton ? self.frame(maxWidth: .infinity, maxHeight: 180) : self.frame(maxWidth: .infinity, minHeight: 80)
 	}
 }
