@@ -13,7 +13,7 @@ struct AmountsHeaderView: View {
 	}
 	
     var body: some View {
-		VStack(spacing: 20) {
+		VStack(spacing: 10) {
 			Text(self.totalAmount.displayPets)
 				.textStyle(StyleGuide.TextStyle.header, isBold: true)
 			

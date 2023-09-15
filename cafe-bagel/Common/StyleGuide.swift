@@ -45,17 +45,17 @@ extension StyleGuide {
 		var font: Font {
 			switch self {
 			case .header:
-				return Font(CTFont(.menuTitle, size: 60))
-			case .subheader:
 				return Font(CTFont(.menuTitle, size: 50))
+			case .subheader:
+				return Font(CTFont(.menuTitle, size: 40))
 			case .blockButtonTitle(let size):
 				return Font(CTFont(.controlContent, size: CGFloat(size)))
 			case .blockButtonSubtitle:
-				return Font(CTFont(.controlContent, size: 30))
+				return Font(CTFont(.controlContent, size: 25))
 			case .inlineButton:
-				return Font(CTFont(.miniSystem, size: 25))
+				return Font(CTFont(.miniSystem, size: 20))
 			case .indicatorText:
-				return Font(CTFont(.message, size: 35))
+				return Font(CTFont(.message, size: 30))
 			case .details:
 				return Font(CTFont(.message, size: 30))
 			}
@@ -80,6 +80,7 @@ extension Text {
 extension StyleGuide {
 	enum Size {
 		static let buttonMargin: CGFloat = 20
-		static let checkoutIndicatorImage: CGFloat = 230
+		static let checkoutIndicatorImage: CGFloat = 160
+		static let amountHeaderPadding: EdgeInsets = EdgeInsets(top: 80, leading: 0, bottom: 100, trailing: 0)
 	}
 }
