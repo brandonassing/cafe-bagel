@@ -30,7 +30,11 @@ class AuthViewModel: ObservableObject {
 		// TODO: use combine delay instead
 		let authDelay = DispatchTimeInterval.seconds((self.isNoTip ? 9 : 3))
 		DispatchQueue.main.asyncAfter(deadline: .now() + authDelay) { [weak self] in
-			self?.isAuthorized = true
+			guard let self else { return }
+			self.isAuthorized = true
+			if !self.isNoTip {
+				self.playSound(.authApproved)
+			}
 		}
 	}
 	
