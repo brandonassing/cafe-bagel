@@ -47,7 +47,6 @@ struct AuthView: View {
 				} else {
 					ZStack {
 						if self.viewModel.isNoTip {
-							// TODO: play shame audio
 							Image("BagelSad")
 								.resizable()
 								.clipShape(Circle())
