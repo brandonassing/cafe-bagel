@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct CartBuildingView: View {
-	@ObservedObject private var viewModel = CartBuildingViewModel()
+	@StateObject private var viewModel = CartBuildingViewModel()
 	@State private var navPath: [ViewType] = []
 
     var body: some View {

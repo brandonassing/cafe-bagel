@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct AuthView: View {
-	@ObservedObject private var viewModel: AuthViewModel
+	@StateObject private var viewModel: AuthViewModel
 	@Binding var navPath: [ViewType]
 
 	@State private var showAuthorized = false
@@ -13,7 +13,7 @@ struct AuthView: View {
 
 	init(navPath: Binding<[ViewType]>, checkout: Checkout) {
 		self._navPath = navPath
-		self.viewModel = AuthViewModel(checkout: checkout)
+		self._viewModel = StateObject(wrappedValue: AuthViewModel(checkout: checkout))
 	}
 	
     var body: some View {

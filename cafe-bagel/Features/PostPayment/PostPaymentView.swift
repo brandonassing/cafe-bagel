@@ -2,12 +2,12 @@
 import SwiftUI
 
 struct PostPaymentView: View {
-	@ObservedObject private var viewModel: PostPaymentViewModel
+	@StateObject private var viewModel: PostPaymentViewModel
 	@Binding var navPath: [ViewType]
 
 	init(navPath: Binding<[ViewType]>, checkout: Checkout) {
 		self._navPath = navPath
-		self.viewModel = PostPaymentViewModel(checkout: checkout)
+		self._viewModel = StateObject(wrappedValue: PostPaymentViewModel(checkout: checkout))
 	}
 
 	var body: some View {

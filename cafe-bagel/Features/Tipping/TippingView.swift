@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct TippingView: View {
-	@ObservedObject private var viewModel: TippingViewModel
+	@ObservedObject private var viewModel: TippingViewModel // TODO: marking this @ObservedObject instead of @StateObject because we want it to reinit with the new checkout on "New sale"
 	@State private var showAlert: Bool = false
 	@Binding var navPath: [ViewType]
 
