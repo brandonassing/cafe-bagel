@@ -30,6 +30,7 @@ struct AuthView: View {
 				
 				Spacer()
 			}
+			.animation(nil, value: UUID()) // Prevents AmountsHeaderView from (somehow) being affected by Circle animation
 
 			VStack(alignment: .center, spacing: 40) {
 				if self.showAuthorized {
