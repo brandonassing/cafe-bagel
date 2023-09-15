@@ -8,7 +8,7 @@ class TippingViewModel: ObservableObject {
 	
 	@Published var checkout: Checkout
 	@Published var preTipAmount: Money
-	@Published var tipAmount: Money?
+	@Published var selectedTip: TippingOption?
 	@Published var totalAmount: Money
 	@Published var tippingOptions: [TippingOption]
 	@Published var alert: Alert
@@ -18,22 +18,26 @@ class TippingViewModel: ObservableObject {
 
 	init(checkout: Checkout) {
 		// MARK: Inputs
-		self.tipTapped = CurrentValueSubject<TippingOption?, Never>(TippingOption?.none)
-		self.tipConfirmed = PassthroughSubject<Void, Never>()
+		let tipTapped = CurrentValueSubject<TippingOption?, Never>(TippingOption?.none)
+		let tipConfirmed = PassthroughSubject<Void, Never>()
+		self.tipTapped = tipTapped
+		self.tipConfirmed = tipConfirmed
 		
 		// MARK: Output defaults
 		self.checkout = checkout
 		self.preTipAmount = checkout.preTipAmount
-		self.tipAmount = nil
+		self.selectedTip = nil
 		self.totalAmount = checkout.totalAmount
 		self.tippingOptions = checkout.tippingOptions
 		self.alert = .none
 		self.tipSelected = false
 		
 		// MARK: Functionality
-		self.tipTapped
+		tipTapped
 			.sink { [weak self] tippingOption in
 				guard let self, let tippingOption else { return }
+				self.selectedTip = tippingOption
+
 				switch tippingOption.tipType {
 				case .noTip:
 					self.alert = .noTip
@@ -47,7 +51,7 @@ class TippingViewModel: ObservableObject {
 						tipAmount.amountCents < highestTipAmount.amountCents
 					else {
 						self.alert = .none
-						self.tipConfirmed.send()
+						tipConfirmed.send()
 						return
 					}
 					self.alert = .notHighestTip
@@ -55,12 +59,11 @@ class TippingViewModel: ObservableObject {
 			}
 			.store(in: &self.disposables)
 		
-		self.tipConfirmed
-			.withLatestFrom(self.tipTapped)
+		tipConfirmed
+			.withLatestFrom(self.$selectedTip)
 			.sink(receiveValue: { [weak self] tippingOption in
-				guard let self else { return }
+				guard let self, let tippingOption else { return }
 				self.checkout.selectedTip = tippingOption
-				self.tipAmount = self.checkout.tipAmount
 				self.totalAmount = self.checkout.totalAmount
 				self.tipSelected = true
 			})

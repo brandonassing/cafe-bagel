@@ -20,10 +20,9 @@ struct TippingView: View {
 			Group {
 				AmountsHeaderView(
 					preTipAmount: self.viewModel.preTipAmount,
-					tipAmount: self.viewModel.tipAmount,
-					totalAmount: self.viewModel.totalAmount
+					tipAmount: nil, // TODO: display dynamic tip amount for custom tip, and update header to display total
+					totalAmount: self.viewModel.preTipAmount
 				)
-				// TODO: show updating tip amount
 
 				Spacer()
 					.frame(height: 120)

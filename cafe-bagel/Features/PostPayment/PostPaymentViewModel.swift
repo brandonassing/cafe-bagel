@@ -16,7 +16,6 @@ class PostPaymentViewModel: ObservableObject {
 		// MARK: Output defaults
 		self.preTipAmount = checkout.preTipAmount
 		self.tipAmount = checkout.tipAmount
-		// TODO: bug, sometimes totalAmount doesn't include tip amount. Maybe race condition?
 		self.totalAmount = checkout.totalAmount
 		self.postPaymentCompleted = false
 
