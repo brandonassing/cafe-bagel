@@ -82,5 +82,6 @@ extension StyleGuide {
 		static let buttonMargin: CGFloat = 20
 		static let checkoutIndicatorImage: CGFloat = 160
 		static let amountHeaderPadding: EdgeInsets = EdgeInsets(top: 80, leading: 0, bottom: 100, trailing: 0)
+		static let buttonCornerRadius: CGFloat = 8
 	}
 }

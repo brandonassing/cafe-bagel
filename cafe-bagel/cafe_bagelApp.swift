@@ -5,7 +5,8 @@ import SwiftUI
 struct cafe_bagelApp: App {
 	var body: some Scene {
 		WindowGroup {
-			CartBuildingView()
+//			CartBuildingView()
+			AppSwitcherView(viewModel: AppSwitcherViewModel())
 				.preferredColorScheme(.light)
 		}
 	}
