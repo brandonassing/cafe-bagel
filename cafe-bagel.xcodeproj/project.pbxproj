@@ -19,6 +19,13 @@
 		5C1859152AA6A5CC00C7BB3A /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1859142AA6A5CC00C7BB3A /* CombineExt */; };
 		5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */; };
 		5CE5B60D2B8849770093EAD6 /* AppSwitcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60C2B8849770093EAD6 /* AppSwitcherViewModel.swift */; };
+		5CE5B6102B884D430093EAD6 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */; };
+		5CE5B6122B884DC90093EAD6 /* HasSettingsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6112B884DC90093EAD6 /* HasSettingsNetworkService.swift */; };
+		5CE5B6162B884E160093EAD6 /* SettingsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6152B884E160093EAD6 /* SettingsNetworkService.swift */; };
+		5CE5B61A2B88D62F0093EAD6 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6192B88D62F0093EAD6 /* SettingsRepository.swift */; };
+		5CE5B61C2B88D64E0093EAD6 /* HasSettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B61B2B88D64E0093EAD6 /* HasSettingsRepository.swift */; };
+		5CE5B61F2B88D7DF0093EAD6 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B61E2B88D7DF0093EAD6 /* UserDefaultsService.swift */; };
+		5CE5B6212B88D7EF0093EAD6 /* HasUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6202B88D7EF0093EAD6 /* HasUserDefaultsService.swift */; };
 		5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */; };
 		5CEF03792AB0010200D26EE9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */; };
 		5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */; };
@@ -46,6 +53,13 @@
 		5C1859112AA42E3400C7BB3A /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwitcherView.swift; sourceTree = "<group>"; };
 		5CE5B60C2B8849770093EAD6 /* AppSwitcherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwitcherViewModel.swift; sourceTree = "<group>"; };
+		5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		5CE5B6112B884DC90093EAD6 /* HasSettingsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasSettingsNetworkService.swift; sourceTree = "<group>"; };
+		5CE5B6152B884E160093EAD6 /* SettingsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNetworkService.swift; sourceTree = "<group>"; };
+		5CE5B6192B88D62F0093EAD6 /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		5CE5B61B2B88D64E0093EAD6 /* HasSettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasSettingsRepository.swift; sourceTree = "<group>"; };
+		5CE5B61E2B88D7DF0093EAD6 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		5CE5B6202B88D7EF0093EAD6 /* HasUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasUserDefaultsService.swift; sourceTree = "<group>"; };
 		5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentView.swift; sourceTree = "<group>"; };
@@ -92,6 +106,7 @@
 		5C1858EF2AA2E1FF00C7BB3A /* cafe-bagel */ = {
 			isa = PBXGroup;
 			children = (
+				5CE5B60E2B884D040093EAD6 /* Dependencies */,
 				5C18590B2AA2F06400C7BB3A /* Common */,
 				5C1859002AA2E5C900C7BB3A /* Models */,
 				5C1858FE2AA2E3FF00C7BB3A /* Features */,
@@ -160,6 +175,44 @@
 				5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */,
 			);
 			path = AppSwitcher;
+			sourceTree = "<group>";
+		};
+		5CE5B60E2B884D040093EAD6 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B61D2B88D7B20093EAD6 /* UserDefaultsService */,
+				5CE5B6182B88D6210093EAD6 /* SettingsRepository */,
+				5CE5B6142B884DFD0093EAD6 /* SettingsNetworkService */,
+				5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		5CE5B6142B884DFD0093EAD6 /* SettingsNetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B6112B884DC90093EAD6 /* HasSettingsNetworkService.swift */,
+				5CE5B6152B884E160093EAD6 /* SettingsNetworkService.swift */,
+			);
+			path = SettingsNetworkService;
+			sourceTree = "<group>";
+		};
+		5CE5B6182B88D6210093EAD6 /* SettingsRepository */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B61B2B88D64E0093EAD6 /* HasSettingsRepository.swift */,
+				5CE5B6192B88D62F0093EAD6 /* SettingsRepository.swift */,
+			);
+			path = SettingsRepository;
+			sourceTree = "<group>";
+		};
+		5CE5B61D2B88D7B20093EAD6 /* UserDefaultsService */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B6202B88D7EF0093EAD6 /* HasUserDefaultsService.swift */,
+				5CE5B61E2B88D7DF0093EAD6 /* UserDefaultsService.swift */,
+			);
+			path = UserDefaultsService;
 			sourceTree = "<group>";
 		};
 		5CEF03752AA8A78100D26EE9 /* Payment */ = {
@@ -283,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */,
+				5CE5B6162B884E160093EAD6 /* SettingsNetworkService.swift in Sources */,
 				5CEF03922AB3FB8D00D26EE9 /* AmountsHeaderView.swift in Sources */,
 				5C1859022AA2E5D800C7BB3A /* TippingOption.swift in Sources */,
 				5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */,
@@ -290,15 +344,21 @@
 				5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */,
 				5CEF03852AB2971A00D26EE9 /* LocaleButtonViewModel.swift in Sources */,
 				5CEF03972AB48ADE00D26EE9 /* Sound.swift in Sources */,
+				5CE5B61C2B88D64E0093EAD6 /* HasSettingsRepository.swift in Sources */,
+				5CE5B6122B884DC90093EAD6 /* HasSettingsNetworkService.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */,
 				5CEF03992AB52D2500D26EE9 /* SpinnerView.swift in Sources */,
 				5C1859042AA2E61800C7BB3A /* TippingView.swift in Sources */,
+				5CE5B61F2B88D7DF0093EAD6 /* UserDefaultsService.swift in Sources */,
 				5CEF03832AB2970200D26EE9 /* LocaleButtonView.swift in Sources */,
 				5CE5B60D2B8849770093EAD6 /* AppSwitcherViewModel.swift in Sources */,
 				5CEF03802AB0092400D26EE9 /* PostPaymentViewModel.swift in Sources */,
 				5CEF038F2AB33DD700D26EE9 /* CartBuildingViewModel.swift in Sources */,
+				5CE5B6102B884D430093EAD6 /* DependencyContainer.swift in Sources */,
+				5CE5B61A2B88D62F0093EAD6 /* SettingsRepository.swift in Sources */,
 				5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */,
+				5CE5B6212B88D7EF0093EAD6 /* HasUserDefaultsService.swift in Sources */,
 				5C1858F12AA2E1FF00C7BB3A /* cafe_bagelApp.swift in Sources */,
 				5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */,
 				5C18590D2AA2F06E00C7BB3A /* StyleGuide.swift in Sources */,
