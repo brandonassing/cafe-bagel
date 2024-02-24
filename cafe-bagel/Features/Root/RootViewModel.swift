@@ -7,6 +7,7 @@ class RootViewModel: ObservableObject {
 	@Published var appMode: AppMode?
 	
 	init(dependencies: Dependencies) {
-		appMode = dependencies.settingsRepository.getAppMode()
+		dependencies.settingsRepository.appModePublisher
+			.assign(to: &$appMode)
 	}
 }

@@ -1,7 +1,9 @@
 
+import Combine
+
 protocol SettingsRepository {
-	func getAppMode() -> AppMode?
-	func setAppMode(to appMode: AppMode)
+	var appMode: AppMode? { get set }
+	var appModePublisher: Published<AppMode?>.Publisher { get }
 }
 
 enum AppMode: String {
@@ -15,20 +17,26 @@ class SettingsAppRepository: SettingsRepository {
 	private let settingsNetworkService: SettingsNetworkServiceable
 	private let userDefaultsService: UserDefaultsServiceable
 	
+	@Published var appMode: AppMode? {
+		willSet {
+			guard newValue != getAppMode() else { return }
+			userDefaultsService.set(value: newValue?.rawValue, for: .appMode)
+		}
+	}
+	var appModePublisher: Published<AppMode?>.Publisher { $appMode }
+
 	init(dependencies: Dependencies) {
 		self.settingsNetworkService = dependencies.settingsNetworkService
 		self.userDefaultsService = dependencies.userDefaultsService
+		self.appMode = getAppMode()
 	}
 }
 
+// MARK: private helpers
 extension SettingsAppRepository {
-	func getAppMode() -> AppMode? {
+	private func getAppMode() -> AppMode? {
 		let appModeString: String? = userDefaultsService.getValue(for: .appMode)
 		guard let appModeString else { return nil }
 		return AppMode(rawValue: appModeString)
-	}
-	
-	func setAppMode(to appMode: AppMode) {
-		userDefaultsService.set(value: appMode.rawValue, for: .appMode)
 	}
 }

@@ -4,17 +4,21 @@ import Combine
 class AppSwitcherViewModel: ObservableObject {
 	typealias Dependencies = HasSettingsRepository
 	
+	private var settingsRepository: SettingsRepository
+	
 	let appSelected: PassthroughSubject<AppSwitcherChoice, Never>
 
 	private var disposables = Set<AnyCancellable>()
 
 	init(dependencies: Dependencies) {
+		self.settingsRepository = dependencies.settingsRepository
 		let appSelected = PassthroughSubject<AppSwitcherChoice, Never>()
 		self.appSelected = appSelected
 		
 		appSelected
-			.sink { appSwitcherChoice in
-				dependencies.settingsRepository.setAppMode(to: appSwitcherChoice.appMode)
+			.map { $0.appMode }
+			.sink { [weak self] appMode in
+				self?.settingsRepository.appMode = appMode
 			}
 			.store(in: &disposables)
 	}

@@ -3,7 +3,7 @@ import Foundation
 
 protocol UserDefaultsServiceable {
 	func getValue<T>(for key: UserDefaultsKey) -> T?
-	func set<T>(value: T, for key: UserDefaultsKey)
+	func set<T>(value: T?, for key: UserDefaultsKey)
 }
 
 class UserDefaultsService: UserDefaultsServiceable {
@@ -13,7 +13,7 @@ class UserDefaultsService: UserDefaultsServiceable {
 		return defaults.value(forKey: key.rawValue) as? T
 	}
 	
-	func set<T>(value: T, for key: UserDefaultsKey) {
+	func set<T>(value: T?, for key: UserDefaultsKey) {
 		defaults.set(value, forKey: key.rawValue)
 	}
 }
