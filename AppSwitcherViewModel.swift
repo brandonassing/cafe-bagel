@@ -2,16 +2,34 @@
 import Combine
 
 class AppSwitcherViewModel: ObservableObject {
-	// TODO: save app switcher choice to UserDefaults so when app is reloaded it goes directly to the choice
+	typealias Dependencies = HasSettingsRepository
+	
 	let appSelected: PassthroughSubject<AppSwitcherChoice, Never>
 
-	init() {
+	private var disposables = Set<AnyCancellable>()
+
+	init(dependencies: Dependencies) {
 		let appSelected = PassthroughSubject<AppSwitcherChoice, Never>()
 		self.appSelected = appSelected
+		
+		appSelected
+			.sink { appSwitcherChoice in
+				dependencies.settingsRepository.setAppMode(to: appSwitcherChoice.appMode)
+			}
+			.store(in: &disposables)
 	}
 }
 
 enum AppSwitcherChoice {
 	case placeOrders
 	case receiveOrders
+	
+	var appMode: AppMode {
+		switch self {
+		case .placeOrders:
+			return .kiosk
+		case .receiveOrders:
+			return .kitchen
+		}
+	}
 }
