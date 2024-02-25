@@ -4,6 +4,7 @@ import SwiftUI
 struct PostPaymentView: View {
 	@StateObject private var viewModel: PostPaymentViewModel
 	@Binding var navPath: [ViewType]
+	@EnvironmentObject var checkoutNavigation: CheckoutNavigation
 
 	init(navPath: Binding<[ViewType]>, checkout: Checkout) {
 		self._navPath = navPath
@@ -57,7 +58,7 @@ struct PostPaymentView: View {
 		.navigationBarBackButtonHidden(true)
 		.onReceive(self.viewModel.$postPaymentCompleted) {
 			if $0 {
-				self.navPath = []
+				self.checkoutNavigation.showCheckout = false
 			}
 		}
 	}
