@@ -2,7 +2,7 @@
 import Foundation
 
 // TODO: revisit this impl and make it more reactive
-class Checkout {
+class Checkout: Identifiable {
 	let id = UUID()
 	
 	let preTipAmount: Money

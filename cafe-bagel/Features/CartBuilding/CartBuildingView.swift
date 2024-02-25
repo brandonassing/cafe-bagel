@@ -4,18 +4,41 @@ import SwiftUI
 struct CartBuildingView: View {
 	@StateObject private var viewModel = CartBuildingViewModel()
 	@State private var navPath: [ViewType] = []
+	@StateObject private var checkoutNavigation = CheckoutNavigation()
 
     var body: some View {
-		// TODO: present checkout flow modally once CartBuildingView is functional
-		NavigationStack(path: self.$navPath) {
-			TippingView(navPath: self.$navPath, checkout: self.viewModel.checkout)
-				.navigationDestination(for: ViewType.self) { viewType in
-					viewType.view(for: self.$navPath)
+		ScrollView {
+			FillButtonView(text: "Place order") {
+				self.viewModel.randomizePreTipAmount.send()
+			}
+		}
+		.padding()
+		.onReceive(self.viewModel.$checkout) { checkout in
+			self.checkoutNavigation.showCheckout = checkout != nil
+		}
+		.fullScreenCover(isPresented: self.$checkoutNavigation.showCheckout, onDismiss: {
+			self.viewModel.checkout = nil
+			// Prevents pop to TippingView animation before sheet is fully dismissed
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				self.navPath = []
+			}
+		}) {
+			if let checkout = self.viewModel.checkout {
+				NavigationStack(path: self.$navPath) {
+					TippingView(navPath: self.$navPath, checkout: checkout)
+						.navigationDestination(for: ViewType.self) { viewType in
+							viewType.view(for: self.$navPath)
+						}
+						.navigationBarHidden(true)
 				}
-				.navigationBarHidden(true)
-				.onAppear { self.viewModel.randomizePreTipAmount.send() }
+				.environmentObject(self.checkoutNavigation)
+			}
 		}
     }
+}
+
+final class CheckoutNavigation: ObservableObject {
+	@Published var showCheckout = false
 }
 
 enum ViewType: Hashable {
