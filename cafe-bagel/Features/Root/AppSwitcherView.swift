@@ -13,26 +13,11 @@ struct AppSwitcherView: View {
 			Text("I will be used to...")
 				.textStyle(.header)
 			HStack(spacing: StyleGuide.Size.buttonMargin) {
-				// TODO: make reusable generic button
-				Button {
+				FillButtonView(text: "Place orders") {
 					self.viewModel.appSelected.send(.placeOrders)
-				} label: {
-					Text("Place orders")
-						.textStyle(.blockButtonSubtitle) // TODO: rethink textstyles and button styles
-						.padding()
-						.foregroundColor(.white)
-						.background(StyleGuide.Colour.primary)
-						.cornerRadius(StyleGuide.Size.buttonCornerRadius)
 				}
-				Button {
+				FillButtonView(text: "Receive orders") {
 					self.viewModel.appSelected.send(.receiveOrders)
-				} label: {
-					Text("Receive orders")
-						.textStyle(.blockButtonSubtitle)
-						.padding()
-						.foregroundColor(.white)
-						.background(StyleGuide.Colour.primary)
-						.cornerRadius(StyleGuide.Size.buttonCornerRadius)
 				}
 			}
 		}

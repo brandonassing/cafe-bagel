@@ -28,6 +28,7 @@
 		5CE5B6212B88D7EF0093EAD6 /* HasUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6202B88D7EF0093EAD6 /* HasUserDefaultsService.swift */; };
 		5CE5B6232B899CD90093EAD6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6222B899CD90093EAD6 /* RootView.swift */; };
 		5CE5B6252B899D610093EAD6 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6242B899D610093EAD6 /* RootViewModel.swift */; };
+		5CE5B6282B8AD88B0093EAD6 /* FillButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6272B8AD88B0093EAD6 /* FillButtonView.swift */; };
 		5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */; };
 		5CEF03792AB0010200D26EE9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */; };
 		5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */; };
@@ -64,6 +65,7 @@
 		5CE5B6202B88D7EF0093EAD6 /* HasUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasUserDefaultsService.swift; sourceTree = "<group>"; };
 		5CE5B6222B899CD90093EAD6 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5CE5B6242B899D610093EAD6 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		5CE5B6272B8AD88B0093EAD6 /* FillButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButtonView.swift; sourceTree = "<group>"; };
 		5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		5C18590B2AA2F06400C7BB3A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5CE5B6262B8AD8560093EAD6 /* FillButton */,
 				5CEF03902AB3FB7A00D26EE9 /* AmountsHeader */,
 				5CEF03862AB2972000D26EE9 /* LocaleButton */,
 				5CEF03982AB52D2500D26EE9 /* SpinnerView.swift */,
@@ -219,6 +222,14 @@
 				5CE5B61E2B88D7DF0093EAD6 /* UserDefaultsService.swift */,
 			);
 			path = UserDefaultsService;
+			sourceTree = "<group>";
+		};
+		5CE5B6262B8AD8560093EAD6 /* FillButton */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B6272B8AD88B0093EAD6 /* FillButtonView.swift */,
+			);
+			path = FillButton;
 			sourceTree = "<group>";
 		};
 		5CEF03752AA8A78100D26EE9 /* Payment */ = {
@@ -351,6 +362,7 @@
 				5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */,
 				5CEF03852AB2971A00D26EE9 /* LocaleButtonViewModel.swift in Sources */,
 				5CEF03972AB48ADE00D26EE9 /* Sound.swift in Sources */,
+				5CE5B6282B8AD88B0093EAD6 /* FillButtonView.swift in Sources */,
 				5CE5B61C2B88D64E0093EAD6 /* HasSettingsRepository.swift in Sources */,
 				5CE5B6122B884DC90093EAD6 /* HasSettingsNetworkService.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
