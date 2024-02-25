@@ -29,6 +29,11 @@
 		5CE5B6232B899CD90093EAD6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6222B899CD90093EAD6 /* RootView.swift */; };
 		5CE5B6252B899D610093EAD6 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6242B899D610093EAD6 /* RootViewModel.swift */; };
 		5CE5B6282B8AD88B0093EAD6 /* FillButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6272B8AD88B0093EAD6 /* FillButtonView.swift */; };
+		5CE5B62A2B8AF5AA0093EAD6 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6292B8AF5AA0093EAD6 /* MenuItem.swift */; };
+		5CE5B62C2B8AFACC0093EAD6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B62B2B8AFACC0093EAD6 /* Customer.swift */; };
+		5CE5B62E2B8B60620093EAD6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B62D2B8B60620093EAD6 /* Order.swift */; };
+		5CE5B6312B8B642E0093EAD6 /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6302B8B642E0093EAD6 /* MenuRepository.swift */; };
+		5CE5B6332B8B64380093EAD6 /* HasMenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6322B8B64380093EAD6 /* HasMenuRepository.swift */; };
 		5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */; };
 		5CEF03792AB0010200D26EE9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */; };
 		5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */; };
@@ -66,6 +71,11 @@
 		5CE5B6222B899CD90093EAD6 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5CE5B6242B899D610093EAD6 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		5CE5B6272B8AD88B0093EAD6 /* FillButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButtonView.swift; sourceTree = "<group>"; };
+		5CE5B6292B8AF5AA0093EAD6 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		5CE5B62B2B8AFACC0093EAD6 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		5CE5B62D2B8B60620093EAD6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		5CE5B6302B8B642E0093EAD6 /* MenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRepository.swift; sourceTree = "<group>"; };
+		5CE5B6322B8B64380093EAD6 /* HasMenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasMenuRepository.swift; sourceTree = "<group>"; };
 		5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentView.swift; sourceTree = "<group>"; };
@@ -159,6 +169,9 @@
 				5C1859012AA2E5D800C7BB3A /* TippingOption.swift */,
 				5C1859112AA42E3400C7BB3A /* Money.swift */,
 				5CEF03892AB337B100D26EE9 /* Checkout.swift */,
+				5CE5B6292B8AF5AA0093EAD6 /* MenuItem.swift */,
+				5CE5B62B2B8AFACC0093EAD6 /* Customer.swift */,
+				5CE5B62D2B8B60620093EAD6 /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +202,7 @@
 		5CE5B60E2B884D040093EAD6 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				5CE5B62F2B8B64130093EAD6 /* MenuRepository */,
 				5CE5B61D2B88D7B20093EAD6 /* UserDefaultsService */,
 				5CE5B6182B88D6210093EAD6 /* SettingsRepository */,
 				5CE5B6142B884DFD0093EAD6 /* SettingsNetworkService */,
@@ -230,6 +244,23 @@
 				5CE5B6272B8AD88B0093EAD6 /* FillButtonView.swift */,
 			);
 			path = FillButton;
+			sourceTree = "<group>";
+		};
+		5CE5B62F2B8B64130093EAD6 /* MenuRepository */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B6342B8B64B90093EAD6 /* SampleData */,
+				5CE5B6322B8B64380093EAD6 /* HasMenuRepository.swift */,
+				5CE5B6302B8B642E0093EAD6 /* MenuRepository.swift */,
+			);
+			path = MenuRepository;
+			sourceTree = "<group>";
+		};
+		5CE5B6342B8B64B90093EAD6 /* SampleData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SampleData;
 			sourceTree = "<group>";
 		};
 		5CEF03752AA8A78100D26EE9 /* Payment */ = {
@@ -354,10 +385,12 @@
 			files = (
 				5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */,
 				5CE5B6162B884E160093EAD6 /* SettingsNetworkService.swift in Sources */,
+				5CE5B6312B8B642E0093EAD6 /* MenuRepository.swift in Sources */,
 				5CEF03922AB3FB8D00D26EE9 /* AmountsHeaderView.swift in Sources */,
 				5C1859022AA2E5D800C7BB3A /* TippingOption.swift in Sources */,
 				5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */,
 				5C1859122AA42E3400C7BB3A /* Money.swift in Sources */,
+				5CE5B62E2B8B60620093EAD6 /* Order.swift in Sources */,
 				5CE5B6232B899CD90093EAD6 /* RootView.swift in Sources */,
 				5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */,
 				5CEF03852AB2971A00D26EE9 /* LocaleButtonViewModel.swift in Sources */,
@@ -365,10 +398,13 @@
 				5CE5B6282B8AD88B0093EAD6 /* FillButtonView.swift in Sources */,
 				5CE5B61C2B88D64E0093EAD6 /* HasSettingsRepository.swift in Sources */,
 				5CE5B6122B884DC90093EAD6 /* HasSettingsNetworkService.swift in Sources */,
+				5CE5B6332B8B64380093EAD6 /* HasMenuRepository.swift in Sources */,
+				5CE5B62A2B8AF5AA0093EAD6 /* MenuItem.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */,
 				5CEF03992AB52D2500D26EE9 /* SpinnerView.swift in Sources */,
 				5C1859042AA2E61800C7BB3A /* TippingView.swift in Sources */,
+				5CE5B62C2B8AFACC0093EAD6 /* Customer.swift in Sources */,
 				5CE5B61F2B88D7DF0093EAD6 /* UserDefaultsService.swift in Sources */,
 				5CEF03832AB2970200D26EE9 /* LocaleButtonView.swift in Sources */,
 				5CE5B60D2B8849770093EAD6 /* AppSwitcherViewModel.swift in Sources */,

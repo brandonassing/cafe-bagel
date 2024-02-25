@@ -1,17 +1,24 @@
 
 import Combine
+import CombineExt
+import Foundation
 
 class CartBuildingViewModel: ObservableObject {
-	let randomizePreTipAmount: PassthroughSubject<Void, Never>
+	typealias Dependencies = HasMenuRepository
+	
+	let loadMenuItems: PassthroughSubject<Void, Never>
+	let placeOrderTapped: PassthroughSubject<Void, Never>
 	
 	@Published var checkout: Checkout?
+	@Published var menuItems: [MenuItem] = []
 
-	init() {
+	init(dependencies: Dependencies) {
 		// MARK: Inputs
-		self.randomizePreTipAmount = PassthroughSubject<Void, Never>()
+		self.loadMenuItems = PassthroughSubject<Void, Never>()
+		self.placeOrderTapped = PassthroughSubject<Void, Never>()
 		
 		// MARK: Functionality
-		self.randomizePreTipAmount
+		self.placeOrderTapped
 			.map { _ in Checkout(preTipAmount: Money.random()) }
 			.assign(to: &self.$checkout)
 	}

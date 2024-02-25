@@ -2,17 +2,20 @@
 import SwiftUI
 
 struct CartBuildingView: View {
-	@StateObject private var viewModel = CartBuildingViewModel()
+	@StateObject private var viewModel = CartBuildingViewModel(dependencies: DependencyContainer.shared)
 	@State private var navPath: [ViewType] = []
 	@StateObject private var checkoutNavigation = CheckoutNavigation()
 
     var body: some View {
-		ScrollView {
-			FillButtonView(text: "Place order") {
-				self.viewModel.randomizePreTipAmount.send()
+		ScrollView(.vertical) {
+			VStack {
+				FillButtonView(text: "Place order") {
+					self.viewModel.placeOrderTapped.send()
+				}
 			}
+			.padding()
 		}
-		.padding()
+		.onAppear { self.viewModel.loadMenuItems.send() }
 		.onReceive(self.viewModel.$checkout) { checkout in
 			self.checkoutNavigation.showCheckout = checkout != nil
 		}

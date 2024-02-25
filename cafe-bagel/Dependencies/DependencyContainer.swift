@@ -1,5 +1,5 @@
 
-typealias AllDependencies = HasSettingsRepository & HasSettingsNetworkService & HasUserDefaultsService
+typealias AllDependencies = HasSettingsRepository & HasSettingsNetworkService & HasUserDefaultsService & HasMenuRepository
 
 class DependencyContainer: AllDependencies {
 	static let shared = DependencyContainer()
@@ -15,6 +15,10 @@ class DependencyContainer: AllDependencies {
 	
 	lazy var userDefaultsService: UserDefaultsServiceable = {
 		UserDefaultsService()
+	}()
+	
+	lazy var menuRepository: MenuRepository = {
+		MenuAppRepository()
 	}()
 }
 
