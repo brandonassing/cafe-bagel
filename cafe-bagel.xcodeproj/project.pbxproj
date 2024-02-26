@@ -34,6 +34,8 @@
 		5CE5B62E2B8B60620093EAD6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B62D2B8B60620093EAD6 /* Order.swift */; };
 		5CE5B6312B8B642E0093EAD6 /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6302B8B642E0093EAD6 /* MenuRepository.swift */; };
 		5CE5B6332B8B64380093EAD6 /* HasMenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6322B8B64380093EAD6 /* HasMenuRepository.swift */; };
+		5CE5B6382B8C1C510093EAD6 /* ResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6372B8C1C510093EAD6 /* ResultProtocol.swift */; };
+		5CE5B63A2B8C1C5F0093EAD6 /* Result+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B6392B8C1C5F0093EAD6 /* Result+Combine.swift */; };
 		5CEF03772AA8A7FA00D26EE9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */; };
 		5CEF03792AB0010200D26EE9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */; };
 		5CEF037E2AB008A800D26EE9 /* PostPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */; };
@@ -76,6 +78,8 @@
 		5CE5B62D2B8B60620093EAD6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		5CE5B6302B8B642E0093EAD6 /* MenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRepository.swift; sourceTree = "<group>"; };
 		5CE5B6322B8B64380093EAD6 /* HasMenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasMenuRepository.swift; sourceTree = "<group>"; };
+		5CE5B6372B8C1C510093EAD6 /* ResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProtocol.swift; sourceTree = "<group>"; };
+		5CE5B6392B8C1C5F0093EAD6 /* Result+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Combine.swift"; sourceTree = "<group>"; };
 		5CEF03762AA8A7FA00D26EE9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		5CEF03782AB0010200D26EE9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		5CEF037D2AB008A800D26EE9 /* PostPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPaymentView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		5C18590B2AA2F06400C7BB3A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5CE5B6352B8C1C210093EAD6 /* Utilities */,
 				5CE5B6262B8AD8560093EAD6 /* FillButton */,
 				5CEF03902AB3FB7A00D26EE9 /* AmountsHeader */,
 				5CEF03862AB2972000D26EE9 /* LocaleButton */,
@@ -261,6 +266,23 @@
 			children = (
 			);
 			path = SampleData;
+			sourceTree = "<group>";
+		};
+		5CE5B6352B8C1C210093EAD6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B6362B8C1C470093EAD6 /* Result */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5CE5B6362B8C1C470093EAD6 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				5CE5B6372B8C1C510093EAD6 /* ResultProtocol.swift */,
+				5CE5B6392B8C1C5F0093EAD6 /* Result+Combine.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		5CEF03752AA8A78100D26EE9 /* Payment */ = {
@@ -392,6 +414,7 @@
 				5C1859122AA42E3400C7BB3A /* Money.swift in Sources */,
 				5CE5B62E2B8B60620093EAD6 /* Order.swift in Sources */,
 				5CE5B6232B899CD90093EAD6 /* RootView.swift in Sources */,
+				5CE5B6382B8C1C510093EAD6 /* ResultProtocol.swift in Sources */,
 				5CEF038A2AB337B100D26EE9 /* Checkout.swift in Sources */,
 				5CEF03852AB2971A00D26EE9 /* LocaleButtonViewModel.swift in Sources */,
 				5CEF03972AB48ADE00D26EE9 /* Sound.swift in Sources */,
@@ -400,6 +423,7 @@
 				5CE5B6122B884DC90093EAD6 /* HasSettingsNetworkService.swift in Sources */,
 				5CE5B6332B8B64380093EAD6 /* HasMenuRepository.swift in Sources */,
 				5CE5B62A2B8AF5AA0093EAD6 /* MenuItem.swift in Sources */,
+				5CE5B63A2B8C1C5F0093EAD6 /* Result+Combine.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */,
 				5CEF03992AB52D2500D26EE9 /* SpinnerView.swift in Sources */,
