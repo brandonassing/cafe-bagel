@@ -5,12 +5,34 @@ struct CartBuildingView: View {
 	@StateObject private var viewModel = CartBuildingViewModel(dependencies: DependencyContainer.shared)
 	@State private var navPath: [ViewType] = []
 	@StateObject private var checkoutNavigation = CheckoutNavigation()
+    @State private var selectedMenuItem: MenuItem?
+
+	private let columns = [
+		GridItem(.flexible()),
+		GridItem(.flexible()),
+	]
 
     var body: some View {
 		ScrollView(.vertical) {
 			VStack {
-				FillButtonView(text: "Place order") {
-					self.viewModel.placeOrderTapped.send()
+				LazyVGrid(columns: self.columns) {
+					ForEach(self.viewModel.menuItems, id: \.id) { menuItem in
+						Button {
+                            self.selectedMenuItem = menuItem
+						} label: {
+							MenuItemView(menuItem)
+						}
+                        .sheet(item: self.$selectedMenuItem) {
+                            // Reset `selectedMenuItem` on dismiss
+                            self.selectedMenuItem = nil
+                        } content: { menuItem in
+                            MenuItemSheetView(menuItem) { updatedMenuItem in
+                                // Reset `selectedMenuItem` on completion.
+                                self.selectedMenuItem = nil
+                                self.viewModel.placeOrderTapped.send(updatedMenuItem)
+                            }
+                        }
+					}
 				}
 			}
 			.padding()

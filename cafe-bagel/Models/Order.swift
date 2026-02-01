@@ -7,4 +7,11 @@ struct Order {
 	let customer: Customer?
 	let ticketId: String
 	let note: String
+	let date: Date = Date()
+}
+
+extension Order {
+    var preTipAmount: Money {
+        menuItem.price
+    }
 }

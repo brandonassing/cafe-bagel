@@ -1,28 +1,20 @@
 
 import Foundation
 
-struct MenuItem {
+struct MenuItem: Identifiable {
 	let id = UUID()
 	let name: String
-	let description: String?
-	let category: Category
 	let price: Money
-	let optionGroups: [OptionGroup]
+	let optionGroups: [OptionGroup] = []
 }
 
 extension MenuItem {
-	enum Category {
-		case drink
-		case food
-	}
-	
 	struct OptionGroup {
 		let name: String
 		let isRequired: Bool
 		let isMultiSelection: Bool
 		let options: [Option]
-		let defaultOption: Option?
-		let selectedOption: Option?
+		let selectedOption: Option? // TODO: maybe set this to a default option.
 		
 		struct Option {
 			let name: String
