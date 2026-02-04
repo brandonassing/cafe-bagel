@@ -12,6 +12,8 @@ struct Order {
 
 extension Order {
     var preTipAmount: Money {
-        menuItem.price
+        menuItem.optionGroups.reduce(into: menuItem.basePrice) { price, optionGroup in
+            price = price.adding(optionGroup.selectedOption?.additionalCost ?? Money.zero)
+        }
     }
 }

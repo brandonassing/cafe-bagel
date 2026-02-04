@@ -17,7 +17,6 @@
 		5C18590D2AA2F06E00C7BB3A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */; };
 		5C1859122AA42E3400C7BB3A /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859112AA42E3400C7BB3A /* Money.swift */; };
 		5C1859152AA6A5CC00C7BB3A /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1859142AA6A5CC00C7BB3A /* CombineExt */; };
-		5C30DD7C2F2FA25D0081C1C8 /* MenuItemSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C30DD7B2F2FA2590081C1C8 /* MenuItemSheetViewModel.swift */; };
 		5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */; };
 		5CE5B60D2B8849770093EAD6 /* AppSwitcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60C2B8849770093EAD6 /* AppSwitcherViewModel.swift */; };
 		5CE5B6102B884D430093EAD6 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */; };
@@ -64,7 +63,6 @@
 		5C1859092AA2E98500C7BB3A /* TippingOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TippingOptionView.swift; sourceTree = "<group>"; };
 		5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		5C1859112AA42E3400C7BB3A /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
-		5C30DD7B2F2FA2590081C1C8 /* MenuItemSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemSheetViewModel.swift; sourceTree = "<group>"; };
 		5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwitcherView.swift; sourceTree = "<group>"; };
 		5CE5B60C2B8849770093EAD6 /* AppSwitcherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwitcherViewModel.swift; sourceTree = "<group>"; };
 		5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 		5CE5B63B2B8C2D760093EAD6 /* MenuItem */ = {
 			isa = PBXGroup;
 			children = (
-				5C30DD7B2F2FA2590081C1C8 /* MenuItemSheetViewModel.swift */,
 				5CE5B63C2B8C2D8B0093EAD6 /* MenuItemView.swift */,
 				5CE5B6402B8E1C3D0093EAD6 /* MenuItemSheetView.swift */,
 			);
@@ -425,7 +422,6 @@
 				5C1859062AA2E63C00C7BB3A /* TippingViewModel.swift in Sources */,
 				5CE5B6162B884E160093EAD6 /* SettingsNetworkService.swift in Sources */,
 				5CE5B6312B8B642E0093EAD6 /* MenuRepository.swift in Sources */,
-				5C30DD7C2F2FA25D0081C1C8 /* MenuItemSheetViewModel.swift in Sources */,
 				5CEF03922AB3FB8D00D26EE9 /* AmountsHeaderView.swift in Sources */,
 				5C1859022AA2E5D800C7BB3A /* TippingOption.swift in Sources */,
 				5CEF038D2AB33C5B00D26EE9 /* CartBuildingView.swift in Sources */,

@@ -14,7 +14,7 @@ struct MenuItemView: View {
 				Text(menuItem.name)
 					.textStyle(.subheader)
 				Spacer()
-				Text(menuItem.price.displayValue)
+				Text(menuItem.basePrice.displayValue)
 			}
 		}
 		.padding()
