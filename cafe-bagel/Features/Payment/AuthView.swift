@@ -54,7 +54,5 @@ struct AuthView: View {
 		}
 		.padding()
 		.navigationBarBackButtonHidden(true)
-		.animation(nil, value: UUID()) // Prevents view from being affected by SpinnerView animation
-
     }
 }
