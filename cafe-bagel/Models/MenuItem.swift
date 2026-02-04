@@ -2,10 +2,11 @@
 import Foundation
 
 struct MenuItem: Identifiable {
-	let id = UUID()
+	let id = UUID() // TODO: does it make sense for MenuItem (and OptionGroup and Option) to have an identity? Should these be immutable value types instead?
 	let name: String
 	let basePrice: Money
 	var optionGroups: [OptionGroup] = defaultOptionGroups
+    var note: String? = nil
 }
 
 extension MenuItem {
@@ -20,7 +21,6 @@ extension MenuItem {
     static let defaultOptionGroups: [OptionGroup] = [
         OptionGroup(
             name: "Milk",
-            isRequired: true,
             options: [
                 OptionGroup.Option(name: "2%", additionalCost: nil),
                 OptionGroup.Option(name: "Oat", additionalCost: Money(amountCents: 200)),
@@ -28,7 +28,6 @@ extension MenuItem {
         ),
         OptionGroup(
             name: "Iced",
-            isRequired: true,
             options: [
                 OptionGroup.Option(name: "Yes", additionalCost: nil),
                 OptionGroup.Option(name: "No", additionalCost: nil),
@@ -36,7 +35,6 @@ extension MenuItem {
         ),
         OptionGroup(
             name: "Sweetened",
-            isRequired: true,
             options: [
                 OptionGroup.Option(name: "Yes", additionalCost: nil),
                 OptionGroup.Option(name: "No", additionalCost: nil),
@@ -49,17 +47,16 @@ extension MenuItem {
     struct OptionGroup: Identifiable {
         let id = UUID()
 		let name: String
-		let isRequired: Bool
 		let options: [Option]
         
         private var _selectedOption: Option? = nil
-        /// Returns the first item in `options` if `isRequired` is true and a selected option has not been set yet.
+        /// Returns the first item in `options` if a selected option has not been set yet.
         var selectedOption: Option? {
             get {
                 // If an option has been set, return it.
                 guard let option = _selectedOption else {
                     // If an option isn't required, don't set a default value using the first option.
-                    return isRequired ? options.first : nil
+                    return options.first
                 }
                 return option
             }
@@ -68,9 +65,8 @@ extension MenuItem {
             }
         }
 
-        init(name: String, isRequired: Bool, options: [Option]) {
+        init(name: String, options: [Option]) {
             self.name = name
-            self.isRequired = isRequired
             self.options = options
         }
         

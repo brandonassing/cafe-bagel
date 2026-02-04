@@ -2,6 +2,8 @@
 import SwiftUI
 
 struct MenuItemSheetView: View {
+    @State private var note: String = ""
+    
     @State private var menuItem: MenuItem
 	private let confirmAction: (MenuItem) -> Void
 
@@ -31,10 +33,17 @@ struct MenuItemSheetView: View {
                         .pickerStyle(.menu)
                     }
                 }
+                
+                TextField("Customize", text: $note)
+                    .textFieldStyle(.roundedBorder)
             }
             .padding()
+                        
             Spacer()
             FillButtonView(text: "Place order") {
+                if !self.note.isEmpty {
+                    self.menuItem.note = self.note
+                }
                 confirmAction(self.menuItem)
             }
         }
