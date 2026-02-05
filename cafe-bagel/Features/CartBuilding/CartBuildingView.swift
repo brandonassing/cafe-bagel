@@ -9,7 +9,8 @@ struct CartBuildingView: View {
 
 	private let columns = [
 		GridItem(.flexible()),
-		GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
 	]
 
     var body: some View {
@@ -29,11 +30,15 @@ struct CartBuildingView: View {
                             MenuItemSheetView(menuItem) { updatedMenuItem in
                                 // Reset `selectedMenuItem` on completion.
                                 self.selectedMenuItem = nil
-                                self.viewModel.placeOrderTapped.send(updatedMenuItem)
+                                self.viewModel.addItemToCart(updatedMenuItem)
                             }
                         }
 					}
 				}
+                
+                CartView(order: self.viewModel.order) {
+                    self.viewModel.placeOrderTapped.send()
+                }
 			}
 			.padding()
 		}
@@ -42,7 +47,7 @@ struct CartBuildingView: View {
 			self.checkoutNavigation.showCheckout = checkout != nil
 		}
 		.fullScreenCover(isPresented: self.$checkoutNavigation.showCheckout, onDismiss: {
-			self.viewModel.checkout = nil
+			self.viewModel.resetCart()
 			// Prevents pop to TippingView animation before sheet is fully dismissed
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				self.navPath = []

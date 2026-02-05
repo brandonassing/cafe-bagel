@@ -18,6 +18,6 @@ struct MenuItemView: View {
 			}
 		}
 		.padding()
-		.border(.blue)
+        .border(.blue, width: 2)
 	}
 }

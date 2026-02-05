@@ -40,7 +40,7 @@ struct MenuItemSheetView: View {
             .padding()
                         
             Spacer()
-            FillButtonView(text: "Place order") {
+            FillButtonView(text: "Add to cart") {
                 if !self.note.isEmpty {
                     self.menuItem.note = self.note
                 }

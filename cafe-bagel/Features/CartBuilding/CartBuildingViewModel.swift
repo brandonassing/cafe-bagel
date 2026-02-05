@@ -7,22 +7,20 @@ class CartBuildingViewModel: ObservableObject {
 	typealias Dependencies = HasMenuRepository
 	
 	let loadMenuItems: PassthroughSubject<Void, Never>
-	let placeOrderTapped: PassthroughSubject<MenuItem, Never>
+	let placeOrderTapped: PassthroughSubject<Void, Never>
 	
-	@Published var checkout: Checkout? // TODO: how do we clear checkout after checkout completion? `CartBuildingViewModel` isn't re-init'd.
+	@Published var checkout: Checkout?
 	@Published var menuItems: [MenuItem] = []
-    // TODO: add a `savedMenuItems` to support multiple items per Order.
+    @Published var order: Order = Order.new // Start with an empty `Order`.
 
 	init(dependencies: Dependencies) {
 		// MARK: Inputs
 		self.loadMenuItems = PassthroughSubject<Void, Never>()
-		self.placeOrderTapped = PassthroughSubject<MenuItem, Never>()
+		self.placeOrderTapped = PassthroughSubject<Void, Never>()
 		
 		// MARK: Functionality
 		self.placeOrderTapped
-            .map { menuItem in
-                Order(menuItem: menuItem, customer: nil, ticketId: "", note: "")
-            }
+            .withLatestFrom(self.$order)
             .map { order in Checkout(order: order) }
 			.assign(to: &self.$checkout)
 		
@@ -36,4 +34,13 @@ class CartBuildingViewModel: ObservableObject {
 			.unwrapSuccess() // TODO: handle failure with error state
 			.assign(to: &self.$menuItems)
 	}
+    
+    func addItemToCart(_ menuItem: MenuItem) {
+        self.order.menuItems.append(menuItem)
+    }
+    
+    func resetCart() {
+        self.checkout = nil
+        self.order = Order.new
+    }
 }
