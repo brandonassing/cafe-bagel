@@ -16,6 +16,7 @@ extension StyleGuide.Colour {
 		static let dark = StyleGuide.Colour.dark
 		static let inlineButton = StyleGuide.Colour.primary
 		static let grey = Color(red: 0.25, green: 0.25, blue: 0.25)
+        static let lightGrey = Color(red: 0.50, green: 0.50, blue: 0.50)
 	}
 }
 
@@ -27,7 +28,8 @@ extension StyleGuide {
 		case blockButtonSubtitle
 		case inlineButton
 		case indicatorText
-		case details
+		case detailsPrimary
+        case detailsSecondary
 		
 		var color: Color {
 			switch self {
@@ -37,8 +39,10 @@ extension StyleGuide {
 				return StyleGuide.Colour.Text.light
 			case .inlineButton:
 				return StyleGuide.Colour.Text.inlineButton
-			case .details:
+			case .detailsPrimary:
 				return StyleGuide.Colour.Text.grey
+            case .detailsSecondary:
+                return StyleGuide.Colour.Text.lightGrey
 			}
 		}
 		
@@ -56,15 +60,17 @@ extension StyleGuide {
 				return Font(CTFont(.miniSystem, size: 20))
 			case .indicatorText:
 				return Font(CTFont(.message, size: 30))
-			case .details:
+			case .detailsPrimary:
 				return Font(CTFont(.message, size: 30))
+            case .detailsSecondary:
+                return Font(CTFont(.message, size: 25))
 			}
 		}
 	}
 }
 
 extension Text {
-	func textStyle(_ textStyle: StyleGuide.TextStyle, isBold: Bool = false) -> Text {
+    func textStyle(_ textStyle: StyleGuide.TextStyle, isBold: Bool = false, isItalic: Bool = false) -> Text {
 		var view = self
 			.foregroundColor(textStyle.color)
 			.font(textStyle.font)
@@ -72,6 +78,10 @@ extension Text {
 		if isBold {
 			view = view.bold()
 		}
+        
+        if isItalic {
+            view = view.italic()
+        }
 		
 		return view
 	}

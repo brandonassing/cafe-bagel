@@ -17,7 +17,7 @@ struct CartBuildingView: View {
 		ScrollView(.vertical) {
 			VStack {
 				LazyVGrid(columns: self.columns) {
-					ForEach(self.viewModel.menuItems, id: \.id) { menuItem in
+					ForEach(self.viewModel.menuItems, id: \.id) { menuItem in // TODO: id conflict if you add 2 of the same item.
 						Button {
                             self.selectedMenuItem = menuItem
 						} label: {

@@ -17,7 +17,7 @@ struct MenuItemSheetView: View {
             Text(self.menuItem.name)
                 .textStyle(.header)
             Text(self.menuItem.totalPrice.displayValue)
-                .textStyle(.details)
+                .textStyle(.detailsPrimary)
             
             VStack {
                 ForEach(Array(self.menuItem.optionGroups.enumerated()), id: \.element.id) { index, optionGroup in
