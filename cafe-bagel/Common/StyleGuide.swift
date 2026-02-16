@@ -6,6 +6,7 @@ enum StyleGuide {}
 extension StyleGuide {
 	enum Colour {
 		static let primary = Color(red: 0.15, green: 0.43, blue: 0.96)
+        static let light = Color(red: 0.90, green: 0.90, blue: 0.90)
 		static let dark = Color(red: 0.18, green: 0.18, blue: 0.18)
 	}
 }

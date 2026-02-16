@@ -19,6 +19,7 @@ struct MenuItemView: View {
 			}
 		}
 		.padding()
-        .border(.blue, width: 2)
+        .background(StyleGuide.Colour.light)
+        .cornerRadius(8)
 	}
 }
