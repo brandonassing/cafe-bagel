@@ -18,6 +18,7 @@
 		5C1859122AA42E3400C7BB3A /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1859112AA42E3400C7BB3A /* Money.swift */; };
 		5C1859152AA6A5CC00C7BB3A /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1859142AA6A5CC00C7BB3A /* CombineExt */; };
 		5C56F0182F340C0C002B1BD6 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F0172F340C0A002B1BD6 /* CartView.swift */; };
+		5C56F01A2F42A5E7002B1BD6 /* CustomerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F0192F42A5DD002B1BD6 /* CustomerInputView.swift */; };
 		5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */; };
 		5CE5B60D2B8849770093EAD6 /* AppSwitcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60C2B8849770093EAD6 /* AppSwitcherViewModel.swift */; };
 		5CE5B6102B884D430093EAD6 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */; };
@@ -65,6 +66,7 @@
 		5C18590C2AA2F06E00C7BB3A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		5C1859112AA42E3400C7BB3A /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		5C56F0172F340C0A002B1BD6 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		5C56F0192F42A5DD002B1BD6 /* CustomerInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerInputView.swift; sourceTree = "<group>"; };
 		5CE5B60A2B8846800093EAD6 /* AppSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwitcherView.swift; sourceTree = "<group>"; };
 		5CE5B60C2B8849770093EAD6 /* AppSwitcherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwitcherViewModel.swift; sourceTree = "<group>"; };
 		5CE5B60F2B884D430093EAD6 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		5CEF038B2AB33C4900D26EE9 /* CartBuilding */ = {
 			isa = PBXGroup;
 			children = (
+				5C56F0192F42A5DD002B1BD6 /* CustomerInputView.swift */,
 				5C56F0172F340C0A002B1BD6 /* CartView.swift */,
 				5CE5B63B2B8C2D760093EAD6 /* MenuItem */,
 				5CEF038C2AB33C5B00D26EE9 /* CartBuildingView.swift */,
@@ -441,6 +444,7 @@
 				5CE5B6122B884DC90093EAD6 /* HasSettingsNetworkService.swift in Sources */,
 				5CE5B6332B8B64380093EAD6 /* HasMenuRepository.swift in Sources */,
 				5CE5B62A2B8AF5AA0093EAD6 /* MenuItem.swift in Sources */,
+				5C56F01A2F42A5E7002B1BD6 /* CustomerInputView.swift in Sources */,
 				5CE5B63A2B8C1C5F0093EAD6 /* Result+Combine.swift in Sources */,
 				5C18590A2AA2E98500C7BB3A /* TippingOptionView.swift in Sources */,
 				5CE5B60B2B8846800093EAD6 /* AppSwitcherView.swift in Sources */,

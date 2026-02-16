@@ -4,7 +4,7 @@ import Foundation
 struct Order {
 	let id = UUID()
 	var menuItems: [MenuItem]
-	let customer: Customer?
+	var customer: Customer?
 //	let ticketId: String
 	let note: String?
 	let date: Date = Date()

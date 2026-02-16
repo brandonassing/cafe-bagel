@@ -47,7 +47,7 @@ struct PostPaymentView: View {
 				Spacer()
 					.frame(height: 40)
 				
-				Text("Thanks!")
+                Text(makeThankYouText(customer: self.viewModel.customer))
 					.textStyle(.indicatorText, isBold: true)
 				
 				Spacer()
@@ -62,4 +62,13 @@ struct PostPaymentView: View {
 			}
 		}
 	}
+}
+
+private extension PostPaymentView {
+    func makeThankYouText(customer: Customer?) -> String {
+        if let customer {
+            return "Thank you, \(customer.firstName)!"
+        }
+        return "Thank you!"
+    }
 }

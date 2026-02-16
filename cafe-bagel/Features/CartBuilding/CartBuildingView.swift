@@ -6,6 +6,7 @@ struct CartBuildingView: View {
 	@State private var navPath: [ViewType] = []
 	@StateObject private var checkoutNavigation = CheckoutNavigation()
     @State private var selectedMenuItem: MenuItem?
+    @State private var showCustomerView: Bool = false
 
 	private let columns = [
 		GridItem(.flexible()),
@@ -41,7 +42,13 @@ struct CartBuildingView: View {
 				}
                 
                 CartView(order: self.viewModel.order) {
-                    self.viewModel.placeOrderTapped.send()
+                    self.showCustomerView = true
+                }
+                .sheet(isPresented: self.$showCustomerView) {
+                    CustomerInputView { customer in
+                        self.viewModel.setCustomer(customer)
+                        self.viewModel.placeOrderTapped.send()
+                    }
                 }
 			}
 			.padding()

@@ -24,6 +24,8 @@ class Checkout: Identifiable {
 		
 		return selectedTip.tipType == .noTip || tipAmountCents == 0
 	}
+    
+    let customer: Customer?
 	
     init(order: Order) {
         self.preTipAmount = order.preTipAmount
@@ -36,5 +38,7 @@ class Checkout: Identifiable {
 			]
 			return Array(options.prefix(3))
 		}()
+        
+        self.customer = order.customer
 	}
 }

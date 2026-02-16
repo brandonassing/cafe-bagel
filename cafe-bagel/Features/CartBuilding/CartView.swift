@@ -1,7 +1,6 @@
 
 import SwiftUI
 
-// TODO: add validation; we need a customer to place order.
 struct CartView: View {
     let order: Order
     let confirmAction: () -> Void
@@ -61,7 +60,7 @@ struct CartView: View {
             Spacer()
                 .frame(height: 50)
             
-            FillButtonView(text: "Place order", isDisabled: order.menuItems.isEmpty) {
+            FillButtonView(text: "Continue", isDisabled: order.menuItems.isEmpty) {
                 confirmAction()
             }
         }

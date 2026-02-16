@@ -39,6 +39,10 @@ class CartBuildingViewModel: ObservableObject {
         self.order.menuItems.append(menuItem)
     }
     
+    func setCustomer(_ customer: Customer) {
+        self.order.customer = customer
+    }
+    
     func resetCart() {
         self.checkout = nil
         self.order = Order.new
