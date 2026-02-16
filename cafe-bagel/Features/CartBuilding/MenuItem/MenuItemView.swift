@@ -12,9 +12,10 @@ struct MenuItemView: View {
 		VStack {
 			HStack {
 				Text(menuItem.name)
-					.textStyle(.subheader)
+                    .textStyle(.detailsPrimary, isBold: true)
 				Spacer()
 				Text(menuItem.basePrice.displayValue)
+                    .textStyle(.detailsSecondary)
 			}
 		}
 		.padding()

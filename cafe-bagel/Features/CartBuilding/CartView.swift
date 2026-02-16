@@ -12,7 +12,7 @@ struct CartView: View {
             ForEach(order.menuItems) { item in
                 HStack {
                     Text(item.name)
-                        .textStyle(.detailsPrimary, isBold: true)
+                        .textStyle(.detailsPrimary, isBold: true, isItalic: true)
                     Spacer()
                     Text(item.basePrice.displayValue)
                         .textStyle(.detailsPrimary)
@@ -61,7 +61,7 @@ struct CartView: View {
             Spacer()
                 .frame(height: 50)
             
-            FillButtonView(text: "Place order", isDisabled: order.menuItems.isEmpty ) {
+            FillButtonView(text: "Place order", isDisabled: order.menuItems.isEmpty) {
                 confirmAction()
             }
         }
