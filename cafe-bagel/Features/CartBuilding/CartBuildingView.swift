@@ -17,9 +17,13 @@ struct CartBuildingView: View {
 		ScrollView(.vertical) {
 			VStack {
 				LazyVGrid(columns: self.columns) {
-					ForEach(self.viewModel.menuItems, id: \.id) { menuItem in // TODO: id conflict if you add 2 of the same item.
+					ForEach(self.viewModel.menuItems, id: \.id) { menuItem in
 						Button {
-                            self.selectedMenuItem = menuItem
+                            // Create a new menu item based on the listed original item.
+                            // This ensures 2 of the same menu items added to cart have different ids.
+                            // allowing multiple of the same item on one order.
+                            let newMenuItem = MenuItem.newMenuItem(from: menuItem)
+                            self.selectedMenuItem = newMenuItem
 						} label: {
 							MenuItemView(menuItem)
 						}

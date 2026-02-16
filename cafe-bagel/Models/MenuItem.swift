@@ -10,6 +10,17 @@ struct MenuItem: Identifiable {
 }
 
 extension MenuItem {
+    static func newMenuItem(from menuItem: MenuItem) -> MenuItem {
+        MenuItem(
+            name: menuItem.name,
+            basePrice: menuItem.basePrice,
+            optionGroups: menuItem.optionGroups,
+            note: menuItem.note
+        )
+    }
+}
+
+extension MenuItem {
     var totalPrice: Money {
         optionGroups.reduce(into: basePrice) { price, optionGroup in
             price = price.adding(optionGroup.selectedOption?.additionalCost ?? Money.zero)
