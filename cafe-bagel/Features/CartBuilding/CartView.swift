@@ -19,8 +19,7 @@ struct CartView: View {
                 ForEach(item.optionGroups) { optionGroup in
                     if let selectedOption = optionGroup.selectedOption {
                         HStack {
-                            Spacer()
-                                .frame(width: 50)
+                            StyleGuide.Spacing.indent
                             Text("\(optionGroup.name) - \(selectedOption.name)")
                                 .textStyle(.detailsSecondary)
                             Spacer()
@@ -36,8 +35,7 @@ struct CartView: View {
                         .frame(height: 12)
 
                     HStack {
-                        Spacer()
-                            .frame(width: 50)
+                        StyleGuide.Spacing.indent
                         Text(note)
                             .textStyle(.detailsSecondary, isItalic: true)
                             .lineLimit(3)
@@ -45,8 +43,7 @@ struct CartView: View {
                     }
                 }
 
-                Spacer()
-                    .frame(height: 30)
+                StyleGuide.Spacing.itemSpacing
             }
             
             HStack {
@@ -57,8 +54,7 @@ struct CartView: View {
                     .textStyle(.detailsPrimary)
             }
             
-            Spacer()
-                .frame(height: 50)
+            StyleGuide.Spacing.sectionSpacing
             
             FillButtonView(text: "Continue", isDisabled: order.menuItems.isEmpty) {
                 confirmAction()

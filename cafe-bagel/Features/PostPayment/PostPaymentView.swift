@@ -44,8 +44,7 @@ struct PostPaymentView: View {
 					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 6))
 					.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
 
-				Spacer()
-					.frame(height: 40)
+                StyleGuide.Spacing.sectionSpacing
 				
                 Text(makeThankYouText(customer: self.viewModel.customer))
 					.textStyle(.indicatorText, isBold: true)

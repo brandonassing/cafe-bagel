@@ -16,8 +16,7 @@ struct CustomerInputView: View {
             TextField("Name", text: self.$customerName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            Spacer()
-                .frame(height: 30)
+            StyleGuide.Spacing.sectionSpacing
             
             FillButtonView(text: "Place order", isDisabled: self.customerName.isEmpty) {
                 onComplete(Customer(nameString: self.customerName))

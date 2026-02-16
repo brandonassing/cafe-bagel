@@ -96,3 +96,22 @@ extension StyleGuide {
 		static let buttonCornerRadius: CGFloat = 8
 	}
 }
+
+extension StyleGuide {
+    enum Spacing {
+        static var indent: some View {
+            Spacer()
+                .frame(width: 50)
+        }
+        
+        static var itemSpacing: some View {
+            Spacer()
+                .frame(height: 30)
+        }
+        
+        static var sectionSpacing: some View {
+            Spacer()
+                .frame(height: 50)
+        }
+    }
+}
