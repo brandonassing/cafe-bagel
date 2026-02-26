@@ -20,7 +20,7 @@ struct AmountsHeaderView: View {
 			if let tipAmount = self.tipAmount {
 				let amountsString = "\(self.preTipAmount.displayValue) + \(tipAmount.displayValue) tip"
 				Text(amountsString)
-					.textStyle(StyleGuide.TextStyle.details)
+					.textStyle(StyleGuide.TextStyle.detailsPrimary)
 			}
 		}
     }

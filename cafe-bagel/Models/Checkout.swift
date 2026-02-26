@@ -2,7 +2,7 @@
 import Foundation
 
 // TODO: revisit this impl and make it more reactive
-class Checkout {
+class Checkout: Identifiable {
 	let id = UUID()
 	
 	let preTipAmount: Money
@@ -24,17 +24,21 @@ class Checkout {
 		
 		return selectedTip.tipType == .noTip || tipAmountCents == 0
 	}
+    
+    let customer: Customer?
 	
-	init(preTipAmount: Money) {
-		self.preTipAmount = preTipAmount
+    init(order: Order) {
+        self.preTipAmount = order.preTipAmount
 		self.tippingOptions = {
 			let options = [
-				TippingOption(.percentage(15), preTipAmount: preTipAmount),
-				TippingOption(.percentage(20), preTipAmount: preTipAmount),
-				TippingOption(.percentage(25), preTipAmount: preTipAmount),
-				TippingOption(.percentage(30), preTipAmount: preTipAmount),
+				TippingOption(.percentage(15), preTipAmount: order.preTipAmount),
+				TippingOption(.percentage(20), preTipAmount: order.preTipAmount),
+				TippingOption(.percentage(25), preTipAmount: order.preTipAmount),
+				TippingOption(.percentage(30), preTipAmount: order.preTipAmount),
 			]
 			return Array(options.prefix(3))
 		}()
+        
+        self.customer = order.customer
 	}
 }

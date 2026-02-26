@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Money: Equatable {
+struct Money: Equatable, Hashable {
 	let amountCents: Int
 }
 
@@ -34,6 +34,14 @@ extension Money {
 }
 
 extension Money {
+    func adding(_ moneyToAdd: Money) -> Money {
+        Money(amountCents: self.amountCents + moneyToAdd.amountCents)
+    }
+}
+
+extension Money {
+    static let zero = Money(amountCents: 0)
+    
 	static func random() -> Money {
 		let dollarAmount = Int.random(in: 2...8)
 		let centsAddition = Bool.random() ? 50 : 0

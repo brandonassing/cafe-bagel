@@ -4,6 +4,7 @@ import SwiftUI
 struct PostPaymentView: View {
 	@StateObject private var viewModel: PostPaymentViewModel
 	@Binding var navPath: [ViewType]
+	@EnvironmentObject var checkoutNavigation: CheckoutNavigation
 
 	init(navPath: Binding<[ViewType]>, checkout: Checkout) {
 		self._navPath = navPath
@@ -43,10 +44,9 @@ struct PostPaymentView: View {
 					.overlay(Circle().stroke(StyleGuide.Colour.dark, lineWidth: 6))
 					.frame(width: StyleGuide.Size.checkoutIndicatorImage, height: StyleGuide.Size.checkoutIndicatorImage)
 
-				Spacer()
-					.frame(height: 40)
+                StyleGuide.Spacing.sectionSpacing
 				
-				Text("Thanks!")
+                Text(makeThankYouText(customer: self.viewModel.customer))
 					.textStyle(.indicatorText, isBold: true)
 				
 				Spacer()
@@ -57,8 +57,17 @@ struct PostPaymentView: View {
 		.navigationBarBackButtonHidden(true)
 		.onReceive(self.viewModel.$postPaymentCompleted) {
 			if $0 {
-				self.navPath = []
+				self.checkoutNavigation.showCheckout = false
 			}
 		}
 	}
+}
+
+private extension PostPaymentView {
+    func makeThankYouText(customer: Customer?) -> String {
+        if let customer {
+            return "Thank you, \(customer.firstName)!"
+        }
+        return "Thank you!"
+    }
 }

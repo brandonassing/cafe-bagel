@@ -8,6 +8,7 @@ class PostPaymentViewModel: ObservableObject {
 	@Published var tipAmount: Money?
 	@Published var totalAmount: Money
 	@Published var postPaymentCompleted: Bool
+    @Published var customer: Customer?
 	
 	init(checkout: Checkout) {
 		// MARK: Inputs
@@ -18,6 +19,7 @@ class PostPaymentViewModel: ObservableObject {
 		self.tipAmount = checkout.tipAmount
 		self.totalAmount = checkout.totalAmount
 		self.postPaymentCompleted = false
+        self.customer = checkout.customer
 
 		// MARK: Functionality
 		self.newSaleTapped

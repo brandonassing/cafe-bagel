@@ -2,20 +2,84 @@
 import SwiftUI
 
 struct CartBuildingView: View {
-	@StateObject private var viewModel = CartBuildingViewModel()
+	@StateObject private var viewModel = CartBuildingViewModel(dependencies: DependencyContainer.shared)
 	@State private var navPath: [ViewType] = []
+	@StateObject private var checkoutNavigation = CheckoutNavigation()
+    @State private var selectedMenuItem: MenuItem?
+    @State private var showCustomerView: Bool = false
+
+	private let columns = [
+		GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+	]
 
     var body: some View {
-		// TODO: present checkout flow modally once CartBuildingView is functional
-		NavigationStack(path: self.$navPath) {
-			TippingView(navPath: self.$navPath, checkout: self.viewModel.checkout)
-				.navigationDestination(for: ViewType.self) { viewType in
-					viewType.view(for: self.$navPath)
+		ScrollView(.vertical) {
+			VStack {
+				LazyVGrid(columns: self.columns) {
+					ForEach(self.viewModel.menuItems, id: \.id) { menuItem in
+						Button {
+                            // Create a new menu item based on the listed original item.
+                            // This ensures 2 of the same menu items added to cart have different ids.
+                            // allowing multiple of the same item on one order.
+                            let newMenuItem = MenuItem.newMenuItem(from: menuItem)
+                            self.selectedMenuItem = newMenuItem
+						} label: {
+							MenuItemView(menuItem)
+						}
+                        .sheet(item: self.$selectedMenuItem) {
+                            // Reset `selectedMenuItem` on dismiss
+                            self.selectedMenuItem = nil
+                        } content: { menuItem in
+                            MenuItemSheetView(menuItem) { updatedMenuItem in
+                                // Reset `selectedMenuItem` on completion.
+                                self.selectedMenuItem = nil
+                                self.viewModel.addItemToCart(updatedMenuItem)
+                            }
+                        }
+					}
 				}
-				.navigationBarHidden(true)
-				.onAppear { self.viewModel.randomizePreTipAmount.send() }
+                
+                CartView(order: self.viewModel.order) {
+                    self.showCustomerView = true
+                }
+                .sheet(isPresented: self.$showCustomerView) {
+                    CustomerInputView { customer in
+                        self.viewModel.setCustomer(customer)
+                        self.viewModel.placeOrderTapped.send()
+                    }
+                }
+			}
+			.padding()
+		}
+		.onAppear { self.viewModel.loadMenuItems.send() }
+		.onReceive(self.viewModel.$checkout) { checkout in
+			self.checkoutNavigation.showCheckout = checkout != nil
+		}
+		.fullScreenCover(isPresented: self.$checkoutNavigation.showCheckout, onDismiss: {
+			self.viewModel.resetCart()
+			// Prevents pop to TippingView animation before sheet is fully dismissed
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				self.navPath = []
+			}
+		}) {
+			if let checkout = self.viewModel.checkout {
+				NavigationStack(path: self.$navPath) {
+					TippingView(navPath: self.$navPath, checkout: checkout)
+						.navigationDestination(for: ViewType.self) { viewType in
+							viewType.view(for: self.$navPath)
+						}
+						.navigationBarHidden(true)
+				}
+				.environmentObject(self.checkoutNavigation)
+			}
 		}
     }
+}
+
+final class CheckoutNavigation: ObservableObject {
+	@Published var showCheckout = false
 }
 
 enum ViewType: Hashable {
